@@ -21,6 +21,8 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Multiplayer direction: asynchronous competition through comparable run results rather than shared real-time physics.
 - Run structure: multiple auto-generated levels whose layouts remain fixed across repeat playthroughs; variety comes from having several distinct levels rather than regenerating each run.
 - Player control during a run is deliberately limited: the launch determines most momentum, while the player may apply small nudges to the truck. Nudge strength/control authority can be improved through later-defined upgrades.
+- A run ends when the truck loses enough momentum to become effectively immobilized. There is no truck damage or durability system in the MVP.
+- Buildings act as primary bounce/jump surfaces, but the truck may also bounce from the ground when impact speed and angle are sufficient.
 
 ## Next action
 
