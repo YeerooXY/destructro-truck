@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "destructro-truck",
+  "planning_run_id": "destructro-mvp-v1",
+  "status": "planning_scaffold",
+  "activation_policy": {
+    "normal_concurrency": "2-5",
+    "maximum_exceptional_concurrency": "4-6",
+    "rule": "Activate only dependency-ready slots; cross-cutting roles need not remain continuously active and parallel work must not be manufactured."
+  },
+  "slots": [
+    {"slot_id":"contract-steward-slot","role":"Contract Steward","slot_type":"cross_cutting","status":"planned","activation":"early_cross_cutting","owns":["src/core/contracts/**","src/core/domain/**","tests/unit/core/**","tests/fixtures/contracts/**","docs/contracts/**"],"depends_on_roles":[],"task_assignments":[],"notes":"Defines the contract spine first and returns only for reviewed shared-contract changes."},
+    {"slot_id":"core-gameplay-physics-slot","role":"Core Gameplay and Physics Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/gameplay/**","tests/unit/gameplay/**","tests/scenes/gameplay/**","assets/debug/gameplay/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Critical path for the grey-box playable loop."},
+    {"slot_id":"world-level-runtime-slot","role":"World Objects and Level Runtime Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/world/**","levels/**","tools/level_generation/**","tests/unit/world/**","tests/scenes/world/**","assets/debug/world/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Owns world runtime and debug scenes, but no player-facing UI."},
+    {"slot_id":"run-progression-slot","role":"Run Rules, Scoring, and Progression Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/run/**","tests/unit/run/**","tests/integration/save/**","tests/fixtures/run/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Consumes normalized events and owns deterministic run-domain state."},
+    {"slot_id":"ui-input-presentation-slot","role":"UI, Input, and Presentation Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/ui/**","assets/ui/**","assets/audio/**","assets/vfx/**","assets/licenses/**","tests/ui/**","localization/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Owns all player-facing presentation while gameplay state remains read-only."},
+    {"slot_id":"online-release-infrastructure-slot","role":"Online Services and Release Infrastructure Builder","slot_type":"implementation_lane","status":"planned","activation":"light_early_then_dependency_ready","owns":["backend/**","tests/backend/**","tools/build/**","tools/release/**","export_presets.cfg",".github/workflows/**","docs/deployment/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Begins with contracts, fixtures, CI and export scaffolding; substantial service work waits for stable local run contracts."},
+    {"slot_id":"integration-verification-slot","role":"Integration and Verification Agent","slot_type":"cross_cutting","status":"planned","activation":"on_demand_cross_cutting","owns":["tests/integration/cross_lane/**","tests/performance/**","docs/acceptance/**","tools/validation/**","explicitly assigned integration files only"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Receives repeated verification work at dependency-wave boundaries and may make only tiny explicitly assigned integration fixes."},
+    {"slot_id":"red-team-verifier-slot","role":"Red Team Verifier","slot_type":"cross_cutting","status":"planned","activation":"risk_selected_cross_cutting","owns":["assembly/generated/red_team_review_index.json","docs/red_team/reviews/**","tests/red_team/** when explicitly assigned","read access to selected task-relevant files"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Floating adversarial reviewer with durable review records and backlog-crawl mode after Task Splitting."}
+  ],
+  "notes": [
+    "This is a planning-stage role and lane scaffold only.",
+    "Executable tasks, task IDs, claims, assignments, task batches, and the canonical backlog are deferred to Task Splitter."
+  ]
+}

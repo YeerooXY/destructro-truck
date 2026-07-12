@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "destructro-truck",
+  "planning_run_id": "destructro-mvp-v1",
+  "status": "empty_scaffold",
+  "reviews": [],
+  "required_review_fields": [
+    "review_id",
+    "reviewed_task_pr_or_commit",
+    "scope",
+    "reviewer_identity",
+    "started_at",
+    "completed_at",
+    "reviewed_files_and_contracts",
+    "outcome",
+    "severity_summary",
+    "critical_findings",
+    "follow_up_task_references",
+    "reverification_status"
+  ],
+  "backlog_crawl_policy": {
+    "available_after_task_split": true,
+    "selection": "Completed, eligible, unreviewed tasks; prioritize high-risk and highly depended-on work.",
+    "ordering": "Topological, then chronological.",
+    "skip": "Trivial tasks unless explicitly requested.",
+    "resolution_rule": "Never mark a finding resolved without re-verifying the fixing change."
+  }
+}

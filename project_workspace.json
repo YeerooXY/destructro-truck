@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "project_id": "destructro-truck",
   "name": "Destructro Truck",
-  "status": "requirements_review",
+  "status": "planning_review",
   "default_view": "overview",
   "repository": {
     "provider": "github",
@@ -41,11 +41,11 @@
   },
   "ai_guidance": {
     "onboarding_mode": "guided_pr",
-    "human_next_step": "Review and merge the requirements/bootstrap pull request. After merge, start a fresh Planning Agent context from the merged repository files.",
+    "human_next_step": "Review and merge the planning pull request. After merge, start a fresh Task Splitter context to create topologically ordered task batches and the canonical backlog.",
     "notes": [
       "Chat context is temporary; merged repository files are authoritative.",
-      "Planning and task decomposition belong in later pull requests.",
-      "Do not treat requirements as accepted until the requirements/bootstrap pull request is merged."
+      "The planning package defines architecture, contracts, ownership, verification, and lanes, but not executable tasks.",
+      "Do not start Task Splitting until the planning pull request is merged."
     ]
   }
 }

@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.2.0",
+  "project_name": "Destructro Truck",
+  "concurrency_policy": {
+    "normal": "2-5 active agents",
+    "exception": "4-6 only when the dependency graph genuinely permits",
+    "rule": "Do not manufacture parallel work or keep every role active."
+  },
+  "prompts": [
+    {
+      "prompt_id": "contract-steward",
+      "role": "Contract Steward",
+      "activation": "early_cross_cutting",
+      "allowed_files": ["src/core/contracts/**", "src/core/domain/**", "tests/unit/core/**", "tests/fixtures/contracts/**", "docs/contracts/**"],
+      "task_boundaries": [
+        "Own shared versioned schemas, events, DTOs, serialization formats, value objects, and only small deterministic calculations genuinely shared by multiple lanes.",
+        "Publish contracts before dependent implementation begins.",
+        "Do not own lane-specific gameplay, scoring formulas, world behavior, UI behavior, or backend implementation."
+      ]
+    },
+    {
+      "prompt_id": "core-gameplay-physics",
+      "role": "Core Gameplay and Physics Builder",
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/gameplay/**", "tests/unit/gameplay/**", "tests/scenes/gameplay/**", "assets/debug/gameplay/**"],
+      "task_boundaries": [
+        "Own the complete moment-to-moment truck runtime: body and wheels, launch, ground and wreck bounce, capped aerial rotation, nudge, momentum, normalized contacts, viability and stop detection, camera, debug tools, and grey-box feel tuning.",
+        "Publish normalized events and never calculate score, money, progression, achievements, world rewards, UI state, or leaderboard outcomes."
+      ]
+    },
+    {
+      "prompt_id": "world-level-runtime",
+      "role": "World Objects and Level Runtime Builder",
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/world/**", "levels/**", "tools/level_generation/**", "tests/unit/world/**", "tests/scenes/world/**", "assets/debug/world/**"],
+      "task_boundaries": [
+        "Own buildings, wrecks, special momentum structures, balloons, rare aerial targets, recharge objects and pickups, deterministic schedules, fixed level definitions and loading, development-time candidate generation, and world debug scenes.",
+        "Own no player-facing UI: no HUD, radar presentation, menus, icons, tooltips, or final presentation.",
+        "Emit normalized object and route events; do not calculate score, money, achievements, unlocks, or progression."
+      ]
+    },
+    {
+      "prompt_id": "run-progression",
+      "role": "Run Rules, Scoring, and Progression Builder",
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/run/**", "tests/unit/run/**", "tests/integration/save/**", "tests/fixtures/run/**"],
+      "task_boundaries": [
+        "Own Survival and Timed Efficiency rules, lifecycle, scoring, money, combos, boosts, upgrades, equipment, radar capability progression, unlocks, achievements, statistics, atomic save and backup recovery, leaderboard eligibility, compact run-record assembly, and local offline submission queue.",
+        "Consume normalized events; never inspect physics or world nodes directly, render UI, or implement online services."
+      ]
+    },
+    {
+      "prompt_id": "ui-input-presentation",
+      "role": "UI, Input, and Presentation Builder",
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/ui/**", "assets/ui/**", "assets/audio/**", "assets/vfx/**", "assets/licenses/**", "tests/ui/**", "localization/**"],
+      "task_boundaries": [
+        "Own keyboard and gamepad mapping, mobile-aware action abstraction, menus, HUD, launch feedback, resource meters, radar presentation, hints, settings, accessibility, localization-ready text, presentation models, audio and VFX adapters, and final UI integration.",
+        "Consume read-only state and emit commands; never become the source of truth for gameplay rules."
+      ]
+    },
+    {
+      "prompt_id": "online-release-infrastructure",
+      "role": "Online Services and Release Infrastructure Builder",
+      "activation": "light_early_then_dependency_ready_lane",
+      "allowed_files": ["backend/**", "tests/backend/**", "tools/build/**", "tools/release/**", "export_presets.cfg", ".github/workflows/**", "docs/deployment/**"],
+      "task_boundaries": [
+        "Own leaderboard services, compact-run plausibility validation, duplicate, replay and version checks, anonymous identity, progression-ledger reconciliation, recovery-code transfer, crash intake, backend persistence and deployment, CI, Windows export, packaging, and release checks.",
+        "Start lightly with contracts and fixtures, then ramp up only after local run-record, scoring, and progression contracts stabilize.",
+        "Do not own local scoring, progression rewards, or eligibility rules."
+      ]
+    },
+    {
+      "prompt_id": "integration-verification",
+      "role": "Integration and Verification Agent",
+      "activation": "on_demand_cross_cutting",
+      "allowed_files": ["tests/integration/cross_lane/**", "tests/performance/**", "docs/acceptance/**", "tools/validation/**", "explicitly assigned integration files only"],
+      "task_boundaries": [
+        "Own cross-lane checks, integration harnesses and tests, performance scenes, build verification, evidence review, wave-level acceptance, and release acceptance.",
+        "May wire approved components and make tiny explicitly assigned integration-only fixes.",
+        "Receive verification tasks throughout the project, especially at dependency-wave boundaries; never become a catch-all implementation owner."
+      ]
+    },
+    {
+      "prompt_id": "red-team-verifier",
+      "role": "Red Team Verifier",
+      "activation": "risk_selected_cross_cutting",
+      "allowed_files": ["assembly/generated/red_team_review_index.json", "docs/red_team/reviews/**", "tests/red_team/** when explicitly assigned", "read access to selected task-relevant files"],
+      "task_boundaries": [
+        "Adversarially review selected tasks, pull requests, integration boundaries, completed backlog items, and release candidates for scope drift, cheating, nondeterminism, save or progression abuse, leaderboard exploits, privacy issues, weak tests, misleading proof, fragile architecture, performance failures, and competitive unfairness.",
+        "After Task Splitting, support backlog-crawl mode by reading the canonical backlog and review index, prioritizing completed unreviewed high-risk or highly depended-on work, and reviewing in topological then chronological order.",
+        "Record every review durably and never mark a finding resolved without re-verifying the fixing change.",
+        "Do not rewrite implementation freely, approve merges, change requirements, or invent MVP features."
+      ]
+    }
+  ],
+  "common_requirements": {
+    "input_context": ["merged requirements and design principles", "accepted project_spec.json and repo_plan.json", "assigned scope and dependencies", "applicable contracts and acceptance criteria"],
+    "outputs": ["focused changes inside assigned ownership", "appropriate automated or manual evidence", "explicit dependency and contract handoff notes", "no hidden MVP expansion"],
+    "verification": ["acceptance criteria are traceable", "ownership boundaries are respected", "deterministic logic is tested where applicable", "debug-only behavior is excluded from public release"]
+  }
+}
