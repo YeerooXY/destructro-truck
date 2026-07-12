@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.2.0",
+  "project_id": "destructro-truck",
+  "name": "Destructro Truck",
+  "status": "draft",
+  "default_view": "overview",
+  "repository": {
+    "provider": "github",
+    "full_name": "YeerooXY/destructro-truck",
+    "default_branch": "main",
+    "initialized": true,
+    "visibility": "public",
+    "web_url": "https://github.com/YeerooXY/destructro-truck",
+    "implementation_root": "."
+  },
+  "workflow": {
+    "mode": "repository_first",
+    "state_source": "merged_artifacts_and_pull_requests",
+    "change_boundary": "pull_request",
+    "requirements_pr": "separate",
+    "planning_pr": "separate",
+    "task_split_pr": "separate"
+  },
+  "paths": {
+    "intake": {
+      "dir": "assembly/intake",
+      "intake_session": "assembly/intake/intake_session.json",
+      "project_intake": "assembly/intake/project_intake.json"
+    },
+    "requirements": {
+      "dir": "assembly/requirements",
+      "requirements_doc": "assembly/requirements/REQUIREMENTS.md"
+    },
+    "planning_runs": "assembly/planning_runs",
+    "generated": "assembly/generated",
+    "context": "assembly/context",
+    "prompts": "assembly/prompts",
+    "contracts": "assembly/contracts",
+    "viewer": "assembly/web",
+    "tools": "assembly/tools"
+  },
+  "ai_guidance": {
+    "onboarding_mode": "guided_pr",
+    "human_next_step": "Complete guided intake and open the requirements/bootstrap pull request. Do not generate architecture or implementation tasks yet.",
+    "notes": [
+      "Chat context is temporary; merged repository files are authoritative.",
+      "Planning and task decomposition belong in later pull requests."
+    ]
+  }
+}

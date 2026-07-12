@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1.0",
+  "kit_version": "0.1.0-core",
+  "source_repository": "YeerooXY/ai-assembly-line",
+  "source_ref": "main",
+  "project_id": "destructro-truck",
+  "managed_paths": [
+    "AGENTS.md",
+    ".github/copilot-instructions.md",
+    "assembly/docs",
+    "assembly/prompts"
+  ],
+  "project_owned_paths": [
+    "project_workspace.json",
+    "assembly/intake",
+    "assembly/requirements",
+    "assembly/planning_runs",
+    "assembly/generated",
+    "assembly/context"
+  ],
+  "upgrade_rule": "Refresh framework-managed paths in a dedicated pull request. Never overwrite accepted project state automatically."
+}
