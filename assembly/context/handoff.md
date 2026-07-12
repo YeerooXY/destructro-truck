@@ -20,6 +20,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - First post-MVP platform: Android, with mobile-aware controls and UI considered from the start.
 - Multiplayer direction: asynchronous competition through comparable run results rather than shared real-time physics.
 - Run structure: multiple auto-generated levels whose layouts remain fixed across repeat playthroughs; variety comes from having several distinct levels rather than regenerating each run.
+- Player control during a run is deliberately limited: the launch determines most momentum, while the player may apply small nudges to the truck. Nudge strength/control authority can be improved through later-defined upgrades.
 
 ## Next action
 
