@@ -42,6 +42,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 - A run ends when the truck loses enough momentum to become effectively immobilized. There is no truck damage or durability system in the MVP.
 - Buildings act as primary bounce/jump surfaces, but the truck may also bounce from the ground when impact speed and angle are sufficient.
 - MVP buildings use a binary gameplay state: intact or destroyed. There are no intermediate damage states. A qualifying high-speed impact destroys the building immediately; sub-threshold contact leaves it intact.
+- When destroyed, a building is replaced by one simple authored collidable wreck shape that can still act as a smaller ramp or bounce surface. Smaller debris and chunks are visual-only and must not unpredictably alter the truck's trajectory.
 - MVP building content is limited to two building types. Their gameplay behavior is driven by reusable data rather than bespoke one-off logic. Early testing must use debug-style hitboxes and minimal placeholder UI/art; fully painted building art is not required before the destruction system is proven.
 - Presentation: 2D side view with 2D gameplay physics.
 - Visual direction: clean original cartoon/vector art with bold silhouettes, simple scalable shapes, readable debris, and exaggerated impact effects. The style must remain clear on both Windows and Android-sized displays.
@@ -91,7 +92,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 
 ## Resume checkpoint
 
-- Last accepted decision: buildings have only two gameplay states—intact and destroyed—with no intermediate damage stages.
+- Last accepted decision: destroyed buildings leave one simple collidable wreck shape; smaller debris is visual-only.
 - Intake is not yet formally closed or accepted as complete.
 - In the new chat, first read `assembly/context/NEW_CHAT_RESUME.md` and this file from branch `assembly/bootstrap-destructro-truck`.
 - Do not repeat settled questions.
