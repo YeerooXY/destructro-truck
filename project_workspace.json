@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "project_id": "destructro-truck",
   "name": "Destructro Truck",
-  "status": "draft",
+  "status": "requirements_review",
   "default_view": "overview",
   "repository": {
     "provider": "github",
@@ -41,10 +41,11 @@
   },
   "ai_guidance": {
     "onboarding_mode": "guided_pr",
-    "human_next_step": "Complete guided intake and open the requirements/bootstrap pull request. Do not generate architecture or implementation tasks yet.",
+    "human_next_step": "Review and merge the requirements/bootstrap pull request. After merge, start a fresh Planning Agent context from the merged repository files.",
     "notes": [
       "Chat context is temporary; merged repository files are authoritative.",
-      "Planning and task decomposition belong in later pull requests."
+      "Planning and task decomposition belong in later pull requests.",
+      "Do not treat requirements as accepted until the requirements/bootstrap pull request is merged."
     ]
   }
 }
