@@ -1,226 +1,25 @@
-[
-  {
-    "slot_id": "contract-steward-slot",
-    "role": "Contract Steward",
-    "status": "planned",
-    "inputs": [
-      "assembly/generated/project_spec.json",
-      "assembly/generated/repo_plan.json",
-      "assembly/generated/agent_prompts.json",
-      "merged requirements and design principles"
-    ],
-    "outputs": [
-      "versioned shared contracts",
-      "contract fixtures and invariant tests",
-      "consumer handoff notes"
-    ],
-    "allowed_actions": [
-      "define shared contracts before consumers",
-      "maintain versioned schemas and domain invariants",
-      "reject undocumented cross-lane coupling"
-    ],
-    "verification_requirements": [
-      "Contracts trace to accepted requirements.",
-      "Serialization and invariants are tested.",
-      "Dependent lanes receive stable interfaces before implementation."
-    ],
-    "notes": "Topological foundation slot. Readiness is set by the later Task Splitter after contract tasks exist."
+{
+  "schema_version": "0.1.0",
+  "project_id": "destructro-truck",
+  "planning_run_id": "destructro-mvp-v1",
+  "status": "planning_scaffold",
+  "activation_policy": {
+    "normal_concurrency": "2-5",
+    "maximum_exceptional_concurrency": "4-6",
+    "rule": "Activate only dependency-ready slots; cross-cutting roles need not remain continuously active and parallel work must not be manufactured."
   },
-  {
-    "slot_id": "core-gameplay-physics-slot",
-    "role": "Core Gameplay and Physics Builder",
-    "status": "planned",
-    "inputs": [
-      "accepted gameplay and event contracts",
-      "truck configuration and tuning resources",
-      "assigned grey-box acceptance scenarios"
-    ],
-    "outputs": [
-      "launch and truck physics runtime",
-      "normalized collision and viability events",
-      "grey-box gameplay proof"
-    ],
-    "allowed_actions": [
-      "implement owned gameplay files",
-      "tune predictable arcade physics",
-      "publish normalized events",
-      "build focused gameplay tests"
-    ],
-    "verification_requirements": [
-      "Core interactions satisfy assigned acceptance criteria.",
-      "No score, progression, or UI rules are embedded in physics nodes.",
-      "Debug tooling does not affect release behavior."
-    ],
-    "notes": "Critical-path lane. It becomes ready after the minimum gameplay contracts and project skeleton are accepted."
-  },
-  {
-    "slot_id": "world-level-runtime-slot",
-    "role": "World Objects and Level Runtime Builder",
-    "status": "planned",
-    "inputs": [
-      "world-object and gameplay-event contracts",
-      "normalized truck-contact interface",
-      "level-data and deterministic-schedule contracts"
-    ],
-    "outputs": [
-      "building and wreck runtime",
-      "aerial object and pickup runtime",
-      "fixed level loading and generation tools",
-      "world tests and debug scenes"
-    ],
-    "allowed_actions": [
-      "implement data-driven world objects",
-      "author fixed level definitions",
-      "implement deterministic movement schedules",
-      "emit accepted gameplay events"
-    ],
-    "verification_requirements": [
-      "Building transitions and fixed speed costs are deterministic.",
-      "Visual debris cannot alter gameplay.",
-      "Moving schedules repeat for the same level/ruleset version."
-    ],
-    "notes": "Can overlap the physics lane after contact and event interfaces are stable."
-  },
-  {
-    "slot_id": "run-progression-slot",
-    "role": "Run Rules, Scoring, and Progression Builder",
-    "status": "planned",
-    "inputs": [
-      "gameplay events and ruleset contracts",
-      "profile, save, progression, and run-record contracts",
-      "versioned tuning data"
-    ],
-    "outputs": [
-      "mode orchestration",
-      "deterministic scoring and progression",
-      "save and backup orchestration",
-      "compact run-record assembly"
-    ],
-    "allowed_actions": [
-      "implement deterministic run-domain logic",
-      "consume normalized gameplay events",
-      "maintain versioned tuning resources",
-      "build save and progression tests"
-    ],
-    "verification_requirements": [
-      "Identical event sequences yield identical results.",
-      "Offline progression and save recovery are proven.",
-      "Stock and Progression eligibility rules are tested."
-    ],
-    "notes": "Starts after core event contracts; full integration waits for the playable gameplay loop."
-  },
-  {
-    "slot_id": "ui-input-presentation-slot",
-    "role": "UI, Input, and Presentation Builder",
-    "status": "planned",
-    "inputs": [
-      "presentation-model and command contracts",
-      "screen and user-flow definitions",
-      "accessibility and localization constraints"
-    ],
-    "outputs": [
-      "input abstraction",
-      "HUD and menus",
-      "settings and contextual hints",
-      "presentation adapters and asset records"
-    ],
-    "allowed_actions": [
-      "implement owned UI and input files",
-      "render read-only presentation models",
-      "emit accepted player commands",
-      "integrate approved audio and VFX hooks"
-    ],
-    "verification_requirements": [
-      "Keyboard and gamepad parity is demonstrated.",
-      "Accessibility constraints are tested.",
-      "UI contains no duplicated gameplay-domain logic."
-    ],
-    "notes": "Input skeleton and debug HUD can start early; most screens depend on stable run/profile presentation models."
-  },
-  {
-    "slot_id": "online-release-infrastructure-slot",
-    "role": "Online Services and Release Infrastructure Builder",
-    "status": "planned",
-    "inputs": [
-      "API, run-record, identity, progression-ledger, and crash-report contracts",
-      "versioning and abuse rules",
-      "release/export requirements"
-    ],
-    "outputs": [
-      "leaderboard and validation services",
-      "identity/progression reconciliation",
-      "crash intake",
-      "CI and Windows export evidence"
-    ],
-    "allowed_actions": [
-      "implement owned backend and release files",
-      "validate and persist accepted payloads",
-      "build abuse fixtures",
-      "configure build and deployment automation"
-    ],
-    "verification_requirements": [
-      "Invalid and replayed records are rejected with reason codes.",
-      "Service outages do not block local gameplay.",
-      "Release builds exclude development-only tools."
-    ],
-    "notes": "Contract work can begin early; substantial backend implementation should follow stable scoring and run-record semantics."
-  },
-  {
-    "slot_id": "integration-verification-slot",
-    "role": "Integration and Verification Agent",
-    "status": "planned",
-    "inputs": [
-      "lane changes",
-      "accepted contracts",
-      "task acceptance criteria and proof",
-      "build and performance requirements"
-    ],
-    "outputs": [
-      "cross-lane integration findings",
-      "build and performance reports",
-      "merge recommendations",
-      "acceptance checklist evidence"
-    ],
-    "allowed_actions": [
-      "review cross-lane compatibility",
-      "run integration and performance checks",
-      "prepare evidence-based recommendations",
-      "escalate unresolved conflicts"
-    ],
-    "verification_requirements": [
-      "Findings are reproducible and contract-linked.",
-      "Critical-path integrations are covered.",
-      "The MVP boundary remains intact."
-    ],
-    "notes": "Cross-cutting role, not a mandatory full-time implementation lane. Activate where integration risk justifies it."
-  },
-  {
-    "slot_id": "red-team-verifier-slot",
-    "role": "Red Team Verifier",
-    "status": "planned",
-    "inputs": [
-      "selected task or integration diff",
-      "relevant requirements and contracts",
-      "acceptance criteria and submitted proof",
-      "assigned attack focus"
-    ],
-    "outputs": [
-      "severity-ranked findings",
-      "reproduction or reasoning",
-      "contract-linked correction recommendations",
-      "required retests"
-    ],
-    "allowed_actions": [
-      "inspect any selected task across lanes",
-      "probe exploits and failure modes",
-      "challenge scope and evidence quality",
-      "write explicit red-team tests when assigned"
-    ],
-    "verification_requirements": [
-      "Findings are concrete and traceable.",
-      "No unilateral product or implementation changes are made.",
-      "Review scope matches the assigned risk."
-    ],
-    "notes": "Floating adversarial reviewer; not counted as a normal implementation lane or required on trivial tasks."
-  }
-]
+  "slots": [
+    {"slot_id":"contract-steward-slot","role":"Contract Steward","slot_type":"cross_cutting","status":"planned","activation":"early_cross_cutting","owns":["src/core/contracts/**","src/core/domain/**","tests/unit/core/**","tests/fixtures/contracts/**","docs/contracts/**"],"depends_on_roles":[],"task_assignments":[],"notes":"Defines the contract spine first and returns only for reviewed shared-contract changes."},
+    {"slot_id":"core-gameplay-physics-slot","role":"Core Gameplay and Physics Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/gameplay/**","tests/unit/gameplay/**","tests/scenes/gameplay/**","assets/debug/gameplay/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Critical path for the grey-box playable loop."},
+    {"slot_id":"world-level-runtime-slot","role":"World Objects and Level Runtime Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/world/**","levels/**","tools/level_generation/**","tests/unit/world/**","tests/scenes/world/**","assets/debug/world/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Owns world runtime and debug scenes, but no player-facing UI."},
+    {"slot_id":"run-progression-slot","role":"Run Rules, Scoring, and Progression Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/run/**","tests/unit/run/**","tests/integration/save/**","tests/fixtures/run/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Consumes normalized events and owns deterministic run-domain state."},
+    {"slot_id":"ui-input-presentation-slot","role":"UI, Input, and Presentation Builder","slot_type":"implementation_lane","status":"planned","activation":"dependency_ready","owns":["src/ui/**","assets/ui/**","assets/audio/**","assets/vfx/**","assets/licenses/**","tests/ui/**","localization/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Owns all player-facing presentation while gameplay state remains read-only."},
+    {"slot_id":"online-release-infrastructure-slot","role":"Online Services and Release Infrastructure Builder","slot_type":"implementation_lane","status":"planned","activation":"light_early_then_dependency_ready","owns":["backend/**","tests/backend/**","tools/build/**","tools/release/**","export_presets.cfg",".github/workflows/**","docs/deployment/**"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Begins with contracts, fixtures, CI and export scaffolding; substantial service work waits for stable local run contracts."},
+    {"slot_id":"integration-verification-slot","role":"Integration and Verification Agent","slot_type":"cross_cutting","status":"planned","activation":"on_demand_cross_cutting","owns":["tests/integration/cross_lane/**","tests/performance/**","docs/acceptance/**","tools/validation/**","explicitly assigned integration files only"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Receives repeated verification work at dependency-wave boundaries and may make only tiny explicitly assigned integration fixes."},
+    {"slot_id":"red-team-verifier-slot","role":"Red Team Verifier","slot_type":"cross_cutting","status":"planned","activation":"risk_selected_cross_cutting","owns":["assembly/generated/red_team_review_index.json","docs/red_team/reviews/**","tests/red_team/** when explicitly assigned","read access to selected task-relevant files"],"depends_on_roles":["Contract Steward"],"task_assignments":[],"notes":"Floating adversarial reviewer with durable review records and backlog-crawl mode after Task Splitting."}
+  ],
+  "notes": [
+    "This is a planning-stage role and lane scaffold only.",
+    "Executable tasks, task IDs, claims, assignments, task batches, and the canonical backlog are deferred to Task Splitter."
+  ]
+}
