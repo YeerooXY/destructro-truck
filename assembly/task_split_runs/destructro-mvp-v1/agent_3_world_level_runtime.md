@@ -2,6 +2,10 @@
 
 Task count: 14
 
+## Milestone classification
+
+`3.14` is Agent 3's boss task. It must not begin in earnest until the world-object stack, minimal grey-box level, development-time candidate workflow, and the later cross-lane grey-box integration gate are accepted.
+
 ## 3.1 Create world module skeleton and debug scene
 - Depends on: `[1.1, 1.2, 1.5]` plus the later project-skeleton task.
 - Purpose: create `src/world/**`, `levels/**`, `tools/level_generation/**`, world test scenes, and a minimal world sandbox.
