@@ -32,6 +32,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - MVP content target: three distinct fixed-layout levels, one truck, a compact permanent upgrade set, several temporary run-specific boosts, and separate online leaderboards per level.
 - Launch system: launch speed is determined by a timing challenge from the beginning. Ramp angle is initially fixed; a permanent upgrade unlocks a second timing challenge that lets the player influence launch angle. Later upgrades may improve the usable angle range or timing forgiveness.
 - Leaderboards are separated by level and truck model. Within a truck's progression category, all permanent upgrade levels compete together, so a starter and fully upgraded version share the same board and progression provides a deliberate competitive incentive. A separate stock category uses a standardized version of that truck for fair skill comparison. With the one-truck MVP, this means progression and stock boards for each of the three levels.
+- Temporary run-specific boosts are allowed on Progression leaderboard attempts and disabled on Stock leaderboard attempts.
 
 ## Next action
 
