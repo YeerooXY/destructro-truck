@@ -28,9 +28,14 @@ The World Objects and Level Runtime Builder owns data-driven buildings and wreck
 
 The Run Rules, Scoring, and Progression Builder owns Survival and Timed Efficiency orchestration, run lifecycle, score and money calculations, combos, temporary boosts, permanent upgrades, rear-equipment state, radar capability progression, level unlocks, achievements, statistics, atomic save/load and backup recovery, leaderboard eligibility, compact run-record assembly, and local offline submission-queue state. It consumes normalized gameplay events and must not inspect physics/world nodes directly, render UI, or implement online services.
 
+### UI, Input, and Presentation Builder
+
+**Approved scope:** Option B — complete player-facing layer.
+
+The UI, Input, and Presentation Builder owns keyboard/gamepad action mapping, mobile-aware input abstraction, menus, HUD, launch timing feedback, nudge and equipment meters, radar presentation, contextual hints, settings, accessibility, localization-ready text, player-facing presentation models, audio/VFX adapters, and final UI asset integration. It consumes read-only state and emits commands. It may transform state for display but must never become the source of truth for gameplay, scoring, upgrades, radar detection, world behavior, or leaderboard rules. This role is expected to receive many small tasks across several waves rather than one oversized implementation block.
+
 ## Pending roles
 
-- UI, Input, and Presentation Builder
 - Online Services and Release Infrastructure Builder
 - Integration and Verification Agent
 - Red Team Verifier
