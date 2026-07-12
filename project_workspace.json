@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "project_id": "destructro-truck",
   "name": "Destructro Truck",
-  "status": "planning_review",
+  "status": "task_split_review",
   "default_view": "overview",
   "repository": {
     "provider": "github",
@@ -32,6 +32,9 @@
       "requirements_doc": "assembly/requirements/REQUIREMENTS.md"
     },
     "planning_runs": "assembly/planning_runs",
+    "task_split_runs": "assembly/task_split_runs",
+    "task_backlog": "assembly/generated/task_backlog.json",
+    "task_batch_index": "assembly/generated/task_batch_index.json",
     "generated": "assembly/generated",
     "context": "assembly/context",
     "prompts": "assembly/prompts",
@@ -41,11 +44,14 @@
   },
   "ai_guidance": {
     "onboarding_mode": "guided_pr",
-    "human_next_step": "Review and merge the planning pull request. After merge, start a fresh Task Splitter context to create topologically ordered task batches and the canonical backlog.",
+    "human_next_step": "Review and merge the Task Splitter pull request. After merge, begin development from dependency-ready tasks in the canonical backlog.",
     "notes": [
       "Chat context is temporary; merged repository files are authoritative.",
-      "The planning package defines architecture, contracts, ownership, verification, and lanes, but not executable tasks.",
-      "Do not start Task Splitting until the planning pull request is merged."
+      "The canonical backlog contains 114 tasks across eight agent roles.",
+      "The dependency graph has zero missing references and zero circular dependencies.",
+      "Task prefixes identify owning agents, not global execution order.",
+      "Normal useful concurrency is 2-5 agents; use 4-6 only when dependencies are ready and file ownership is disjoint.",
+      "Do not start implementation until the Task Splitter pull request is merged."
     ]
   }
 }
