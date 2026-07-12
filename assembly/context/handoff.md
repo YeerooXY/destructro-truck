@@ -41,7 +41,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 - Mid-air rotation is always available while airborne and does not consume an energy resource. Rotational torque and responsiveness are deliberately capped so angular inertia and timing remain meaningful; permanent upgrades may improve the cap within balanced limits.
 - A run ends when the truck loses enough momentum to become effectively immobilized. There is no truck damage or durability system in the MVP.
 - Buildings act as primary bounce/jump surfaces, but the truck may also bounce from the ground when impact speed and angle are sufficient.
-- MVP buildings use a binary gameplay state: intact or destroyed. There are no intermediate damage states. A qualifying high-speed impact destroys the building immediately; sub-threshold contact leaves it intact.
+- MVP buildings use a binary gameplay state: intact or destroyed. There are no intermediate damage states or minimum destruction threshold. Any truck contact with an intact building destroys it and applies a deterministic momentum/speed loss. Repeated destruction gradually drains momentum until the truck can no longer continue unless skilled play, boosts, pickups, or favorable routing recover enough energy.
 - When destroyed, a building is replaced by one simple authored collidable wreck shape that can still act as a smaller ramp or bounce surface. Smaller debris and chunks are visual-only and must not unpredictably alter the truck's trajectory.
 - MVP building content is limited to two building types. Their gameplay behavior is driven by reusable data rather than bespoke one-off logic. Early testing must use debug-style hitboxes and minimal placeholder UI/art; fully painted building art is not required before the destruction system is proven.
 - Presentation: 2D side view with 2D gameplay physics.
@@ -92,7 +92,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 
 ## Resume checkpoint
 
-- Last accepted decision: destroyed buildings leave one simple collidable wreck shape; smaller debris is visual-only.
+- Last accepted decision: every truck contact destroys an intact building and consumes momentum; there is no destruction threshold.
 - Intake is not yet formally closed or accepted as complete.
 - In the new chat, first read `assembly/context/NEW_CHAT_RESUME.md` and this file from branch `assembly/bootstrap-destructro-truck`.
 - Do not repeat settled questions.
