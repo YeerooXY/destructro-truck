@@ -1,0 +1,420 @@
+{
+  "project_name": "Destructro Truck",
+  "product_summary": {
+    "goal": "Deliver an original offline-first Windows 2D arcade game in Godot where players convert momentum into destruction and destruction rewards back into momentum through skillful routing, progression, and repeat competitive runs.",
+    "users": [
+      "Score-chasing arcade players",
+      "Players who enjoy route optimization, progression, and repeated mastery attempts",
+      "Casual players who need immediately understandable controls without removing the high skill ceiling"
+    ],
+    "non_goals": [
+      "Android release in the MVP",
+      "Real-time multiplayer",
+      "Replay recording or playback",
+      "Runtime procedural level generation",
+      "Photo mode or automatic highlight capture",
+      "Daily challenges, seasons, live events, or live-operations systems",
+      "Gameplay analytics or behavior telemetry",
+      "Official mod support or Workshop integration",
+      "Cloud saves, multiple profiles, full accounts, social features, or cross-device progression",
+      "Dynamic weather, day/night variants, story, cutscenes, cinematic menus, or animated garage presentation",
+      "Advanced structural destruction simulation or collidable debris fields"
+    ]
+  },
+  "safety_boundaries": [
+    "Use original code, names, art, audio, branding, and level layouts; do not copy proprietary material from the inspiration.",
+    "Keep destruction family-friendly and non-graphic, with no injured people, blood, suffering, or realistic consequences.",
+    "Record source, author, license, permitted use, and attribution requirements for every external asset before inclusion.",
+    "Paid or supporter content must remain cosmetic-only and must never alter physics, scoring, progression power, resources, unlocks, or leaderboard eligibility.",
+    "Crash reporting is opt-in and excludes saves, screenshots, recordings, personal information, continuous telemetry, and background uploads.",
+    "Public release builds expose no developer cheats, debug controls, or diagnostic overlays.",
+    "No contributor may silently move accepted post-MVP scope into the MVP."
+  ],
+  "repo_split": [
+    {
+      "name": "destructro-truck",
+      "purpose": "Single product repository containing the Godot client, deterministic gameplay domain, backend services, tools, tests, assets, and Assembly Line planning artifacts.",
+      "contains": [
+        "project.godot and export presets",
+        "src/core for shared contracts, deterministic domain types, configuration, and event definitions",
+        "src/gameplay for truck physics, launch, momentum, collision, camera, and run viability",
+        "src/world for buildings, wrecks, aerial objects, pickups, deterministic schedules, and level runtime",
+        "src/run for game modes, scoring, progression, upgrades, equipment, radar, achievements, statistics, and save orchestration",
+        "src/ui for input abstraction, menus, HUD, settings, hints, localization, and presentation adapters",
+        "backend for leaderboard, validation, anonymous identity/progression reconciliation, and crash-report services",
+        "assets for original and licensed presentation content with attribution records",
+        "tests for deterministic domain, save, run-record, integration, and performance verification",
+        "tools for level candidate generation, validation, build/export, and developer utilities",
+        "assembly for accepted lifecycle artifacts"
+      ],
+      "depends_on": []
+    }
+  ],
+  "domain_model": [
+    {
+      "name": "GameRuleset",
+      "fields": [
+        "ruleset_version",
+        "mode_id",
+        "level_id",
+        "stock_or_progression_category",
+        "timed_duration_optional",
+        "physics_tuning_version",
+        "scoring_tuning_version"
+      ],
+      "relations": [
+        "governs RunSession",
+        "versioned in CompactRunRecord"
+      ]
+    },
+    {
+      "name": "TruckState",
+      "fields": [
+        "position",
+        "linear_velocity",
+        "angular_velocity",
+        "orientation",
+        "grounded_state",
+        "nudge_energy",
+        "equipment_charge",
+        "active_upgrade_snapshot"
+      ],
+      "relations": [
+        "owned by TruckRuntime",
+        "sampled into CompactRunRecord",
+        "observed through GameplayEventBus"
+      ]
+    },
+    {
+      "name": "WorldObjectDefinition",
+      "fields": [
+        "object_id",
+        "object_type",
+        "collision_profile",
+        "resource_exchange",
+        "score_value",
+        "money_value",
+        "movement_schedule_optional",
+        "visual_profile"
+      ],
+      "relations": [
+        "instantiated by LevelRuntime",
+        "emits GameplayEvent on interaction"
+      ]
+    },
+    {
+      "name": "BuildingDefinition",
+      "fields": [
+        "building_type_id",
+        "fixed_speed_cost",
+        "destruction_reward",
+        "intact_collision_shape",
+        "wreck_collision_shape",
+        "impulse_reward_optional",
+        "visual_profile"
+      ],
+      "relations": [
+        "specializes WorldObjectDefinition",
+        "transitions once from intact to destroyed"
+      ]
+    },
+    {
+      "name": "GameplayEvent",
+      "fields": [
+        "event_id",
+        "event_type",
+        "run_time",
+        "source_object_id",
+        "truck_snapshot_reference",
+        "resource_delta",
+        "score_inputs",
+        "metadata"
+      ],
+      "relations": [
+        "published by gameplay/world systems",
+        "consumed by scoring, progression, UI, statistics, validation, and debug tooling"
+      ]
+    },
+    {
+      "name": "RunSession",
+      "fields": [
+        "run_id",
+        "ruleset",
+        "selected_level",
+        "selected_boost",
+        "equipment_snapshot",
+        "progression_snapshot",
+        "score_state",
+        "resource_state",
+        "run_status",
+        "end_reason"
+      ],
+      "relations": [
+        "orchestrates gameplay events",
+        "produces RunResult and CompactRunRecord"
+      ]
+    },
+    {
+      "name": "RunResult",
+      "fields": [
+        "score_total",
+        "score_breakdown",
+        "money_earned",
+        "distance",
+        "destroyed_count",
+        "combo_summary",
+        "mode_result",
+        "achievement_updates",
+        "leaderboard_eligibility"
+      ],
+      "relations": [
+        "presented by Results UI",
+        "applied to PlayerProfile",
+        "serialized into CompactRunRecord"
+      ]
+    },
+    {
+      "name": "PlayerProfile",
+      "fields": [
+        "profile_schema_version",
+        "display_name",
+        "money_balance",
+        "owned_upgrades",
+        "equipped_module",
+        "unlocked_levels",
+        "cosmetic_unlocks",
+        "achievement_state",
+        "statistics",
+        "settings",
+        "anonymous_identity_state"
+      ],
+      "relations": [
+        "persisted by SaveRepository",
+        "updated through ordered progression transactions"
+      ]
+    },
+    {
+      "name": "ProgressionTransaction",
+      "fields": [
+        "transaction_id",
+        "sequence_number",
+        "transaction_type",
+        "currency_delta",
+        "unlock_or_purchase_payload",
+        "ruleset_version",
+        "local_signature",
+        "server_reconciliation_state"
+      ],
+      "relations": [
+        "updates PlayerProfile",
+        "reconciled by Progression Service when online"
+      ]
+    },
+    {
+      "name": "CompactRunRecord",
+      "fields": [
+        "record_version",
+        "run_id",
+        "ruleset_version",
+        "level_version",
+        "profile_token_reference",
+        "progression_snapshot",
+        "boost_and_equipment_snapshot",
+        "score_breakdown",
+        "key_gameplay_events",
+        "resource_changes",
+        "movement_samples",
+        "timestamps",
+        "local_signature"
+      ],
+      "relations": [
+        "queued by SubmissionQueue",
+        "validated by Leaderboard Validation Service"
+      ]
+    }
+  ],
+  "frontend_screens": [
+    {
+      "name": "Main Menu",
+      "renders_from": [
+        "PlayerProfile summary",
+        "network availability",
+        "new-content indicators"
+      ],
+      "notes": "Fast functional entry to Play, Upgrades, Customization, Statistics, Settings, and Help. No animated garage or cinematic background."
+    },
+    {
+      "name": "Mode and Level Select",
+      "renders_from": [
+        "unlocked levels",
+        "Survival and Timed Efficiency definitions",
+        "Stock and Progression categories",
+        "best local and online scores"
+      ],
+      "notes": "Clearly explains temporary boosts being disabled in Stock attempts."
+    },
+    {
+      "name": "Pre-Run Loadout",
+      "renders_from": [
+        "equipped rear module",
+        "random temporary boost selection",
+        "truck category snapshot",
+        "radar capability summary"
+      ],
+      "notes": "Compact and skippable for Instant Restart where rules permit."
+    },
+    {
+      "name": "Gameplay HUD",
+      "renders_from": [
+        "run timer or survival status",
+        "score and combo",
+        "nudge energy",
+        "equipment charge",
+        "radar detections",
+        "contextual hint state"
+      ],
+      "notes": "Must remain readable at high speed and at mobile-scale layouts."
+    },
+    {
+      "name": "Run Results",
+      "renders_from": [
+        "RunResult",
+        "money and unlock deltas",
+        "achievement updates",
+        "leaderboard submission state"
+      ],
+      "notes": "Supports normal result review and minimal-delay Instant Restart."
+    },
+    {
+      "name": "Upgrades and Equipment",
+      "renders_from": [
+        "PlayerProfile currency",
+        "upgrade definitions and prerequisites",
+        "owned levels",
+        "rear equipment catalogue"
+      ],
+      "notes": "No branching-tree visualization is required; mostly independent upgrade cards are sufficient."
+    },
+    {
+      "name": "Customization",
+      "renders_from": [
+        "small cosmetic catalogue",
+        "owned and equipped cosmetics",
+        "supporter/earned source labels"
+      ],
+      "notes": "Strictly cosmetic; default plus one alternate per accepted category."
+    },
+    {
+      "name": "Statistics",
+      "renders_from": [
+        "single-screen PlayerProfile statistics"
+      ],
+      "notes": "No graphs, histories, exports, or extra tracking."
+    },
+    {
+      "name": "Leaderboards",
+      "renders_from": [
+        "ranked entries by level, mode, and category",
+        "local pending submission state"
+      ],
+      "notes": "Shows only rank, display name, score, date, truck, level, and category."
+    },
+    {
+      "name": "Settings and Help",
+      "renders_from": [
+        "audio, display, quality, controls, accessibility, language-ready text, Instant Restart, and reviewed hints"
+      ],
+      "notes": "Essential controls only; advanced diagnostics remain development-only."
+    }
+  ],
+  "backend_services": [
+    {
+      "name": "Leaderboard Query and Submission Service",
+      "responsibility": "Receive compact run records, route them through validation, persist accepted leaderboard entries, return ranked pages, and enforce duplicate/version/expiry rules.",
+      "inputs": [
+        "CompactRunRecord",
+        "leaderboard query filters",
+        "anonymous profile token"
+      ],
+      "outputs": [
+        "accepted/rejected submission result with reason code",
+        "ranked leaderboard entries"
+      ]
+    },
+    {
+      "name": "Run Plausibility Validation Service",
+      "responsibility": "Validate schemas, signatures, event ordering, score arithmetic, resource limits, movement envelopes, ruleset compatibility, duplicates, replay attempts, clock anomalies, and obvious impossibilities without deterministic physics replay.",
+      "inputs": [
+        "CompactRunRecord",
+        "versioned validation rules"
+      ],
+      "outputs": [
+        "validation decision",
+        "machine-readable rejection reasons",
+        "review diagnostics"
+      ]
+    },
+    {
+      "name": "Anonymous Identity and Progression Reconciliation Service",
+      "responsibility": "Issue and rotate device-bound profile credentials, reconcile signed ordered progression transactions, reject duplicate or impossible ledgers, and support one-time recovery-code transfer with one active identity.",
+      "inputs": [
+        "profile registration/rotation request",
+        "ProgressionTransaction ledger",
+        "recovery code redemption"
+      ],
+      "outputs": [
+        "profile token state",
+        "reconciliation result",
+        "rotated recovery material"
+      ]
+    },
+    {
+      "name": "Crash Report Intake Service",
+      "responsibility": "Accept explicitly consented crash reports containing only approved diagnostics and retain enough metadata for triage.",
+      "inputs": [
+        "approved crash report payload"
+      ],
+      "outputs": [
+        "receipt identifier",
+        "validation failure reason"
+      ]
+    }
+  ],
+  "core_engine_responsibilities": [
+    "Provide a Godot project skeleton with deterministic configuration loading and development/release feature flags.",
+    "Separate Godot physics nodes from deterministic domain calculations and versioned gameplay data.",
+    "Own truck launch, body/wheel behavior, camera following, capped aerial rotation, nudge impulses, momentum accounting, contact classification, and run viability detection.",
+    "Publish normalized GameplayEvents rather than letting scoring, progression, or UI inspect physics nodes directly.",
+    "Instantiate versioned fixed-layout levels and deterministic world-object schedules.",
+    "Apply building intact-to-wreck transitions, fixed speed costs, visual-only debris, and data-driven impulse rewards.",
+    "Orchestrate Survival and Timed Efficiency through ruleset strategies sharing the same gameplay runtime.",
+    "Calculate score, rewards, progression transactions, achievements, statistics, and leaderboard eligibility from versioned domain rules.",
+    "Persist one local profile through atomic temporary-write replacement and one automatic backup.",
+    "Produce compact run records and maintain an offline submission queue without requiring connectivity for gameplay.",
+    "Expose read-only presentation models to UI and keep input routed through action abstractions compatible with later touch controls.",
+    "Support debug hitboxes, event tracing, deterministic fixtures, and placeholder-first gameplay validation without exposing tools in release builds."
+  ],
+  "verification_tasks": [
+    "Validate all planning JSON against the AI Assembly Line contracts before planning PR review.",
+    "Create headless tests for deterministic score breakdowns, mode rules, upgrade effects, progression transactions, achievement evaluation, and leaderboard eligibility.",
+    "Create save tests covering atomic replacement, backup restoration, schema/version rejection, and corrupted primary saves.",
+    "Create compact run-record fixtures covering valid submissions, malformed records, duplicate/replayed records, impossible score/resource changes, clock anomalies, and ruleset mismatches.",
+    "Create grey-box manual playtest scenarios for launch, building destruction, fixed speed loss, wreck bounce, balloon recovery, aerial routing, run termination, and instant restart.",
+    "Create deterministic schedule tests for moving plane/satellite-like objects and fixed level layouts.",
+    "Create input tests for keyboard/gamepad action parity and press-versus-hold nudge behavior.",
+    "Create UI accessibility checks for scalable text, non-color-only information, reduced shake/flash, and meaningful audio equivalents.",
+    "Create performance scenes with maximum expected buildings, visual debris, particles, and aerial objects; verify cosmetic scaling does not change gameplay results.",
+    "Create Windows export/build verification and confirm development-only tools are absent from release builds.",
+    "Require recorded gameplay evidence and a manual MVP acceptance checklist before release acceptance.",
+    "Use red-team review for shared contracts, scoring/physics changes, saves, run records, identity/recovery, backend validation, cross-lane changes, and release candidates."
+  ],
+  "starter_prompts": {
+    "intake_interviewer": "Read merged intake and requirements only. Preserve the accepted MVP boundary and route new ideas to explicit change control or post-MVP notes.",
+    "planning_agent": "Define architecture, contracts, file ownership, verification, and topologically compatible implementation lanes without creating executable tasks or changing accepted requirements.",
+    "contract_steward": "Own shared event, data, save, ruleset, API, and validation contracts. Land contract definitions before dependent lane implementation and reject undocumented coupling.",
+    "frontend_builder": "Own input abstraction, presentation models, menus, HUD, settings, hints, localization hooks, and VFX/audio adapters. Consume domain contracts; do not inspect physics internals or invent gameplay state.",
+    "backend_builder": "Own leaderboard, plausibility validation, anonymous identity/progression reconciliation, crash intake, service schemas, and deployment boundaries. Do not require connectivity for local gameplay.",
+    "core_engine_builder": "Own deterministic gameplay/domain implementation across truck physics boundaries, world runtime, run orchestration, scoring, progression, saves, and compact run-record production according to assigned file ownership.",
+    "red_team_verifier": "Adversarially inspect any selected task or integration boundary for scope drift, exploits, nondeterminism, false-positive tests, save/progression abuse, leaderboard cheating, privacy violations, and missing evidence. Report concrete findings without changing requirements or merging work."
+  }
+}
