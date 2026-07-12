@@ -2,13 +2,15 @@
 
 ## Current lifecycle phase
 
-Repository ready; guided requirements intake is in progress on `assembly/bootstrap-destructro-truck`.
+Guided requirements intake is paused at an explicit handoff checkpoint on `assembly/bootstrap-destructro-truck`. Resume from repository files in a fresh chat; do not reconstruct decisions from memory or restart intake.
 
 ## Source of truth
 
 - `project_workspace.json`
 - `assembly/intake/project_intake.json` after guided intake
 - `assembly/requirements/REQUIREMENTS.md`
+- `assembly/context/handoff.md`
+- `assembly/context/NEW_CHAT_RESUME.md`
 
 ## Known facts
 
@@ -21,6 +23,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Input architecture uses a unified action system. The Windows MVP supports both keyboard and gamepad, with gameplay actions routed through an abstraction that also supports future touch buttons, analog values, and press-versus-hold strength without redesigning gameplay logic.
 - Accessibility baseline includes remappable keyboard and gamepad controls, scalable UI and text, separate music and sound-effect volume controls, adjustable screen shake and flash intensity, subtitles or visual equivalents for meaningful audio cues, and gameplay information that never relies on color alone.
 - Monetization direction: the complete game is free to play. Optional revenue may come from cosmetic-only items such as truck skins or visual customization and from a voluntary support-the-creator option. Paid or supporter content must never alter physics, scoring, progression power, gameplay resources, unlock requirements, leaderboard eligibility, or competitive advantage.
+- Cosmetic acquisition uses both earned and paid paths. Some cosmetics unlock through achievements, progression milestones, and challenges; additional supporter cosmetics may be purchased directly. Randomized loot boxes, paid random rewards, and gambling-like cosmetic mechanics are excluded.
 - Multiplayer direction: asynchronous competition through comparable run results rather than shared real-time physics.
 - Run structure: multiple auto-generated levels whose layouts remain fixed across repeat playthroughs; variety comes from having several distinct levels rather than regenerating each run.
 - Player control during a run is deliberately limited: the launch determines most momentum, while the player may apply small nudges to the truck. Nudge strength/control authority can be improved through later-defined upgrades.
@@ -57,6 +60,15 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Leaderboards are separated by level and truck model. Within a truck's progression category, all permanent upgrade levels compete together, so a starter and fully upgraded version share the same board and progression provides a deliberate competitive incentive. A separate stock category uses a standardized version of that truck for fair skill comparison. With the one-truck MVP, this means progression and stock boards for each of the three levels.
 - Temporary run-specific boosts are allowed on Progression leaderboard attempts and disabled on Stock leaderboard attempts.
 
+## Resume checkpoint
+
+- Last accepted decision: cosmetics use both earned and direct-purchase paths, with no randomized loot boxes.
+- Intake is not yet formally closed or accepted as complete.
+- In the new chat, first read `assembly/context/NEW_CHAT_RESUME.md` and this file from branch `assembly/bootstrap-destructro-truck`.
+- Do not repeat settled questions.
+- Continue with exactly one high-impact unresolved question, unless the user explicitly asks to close intake and produce the requirements/bootstrap PR.
+- Do not begin architecture, implementation task splitting, or full planning until intake is explicitly accepted.
+
 ## Next action
 
-Complete guided intake, review and merge the requirements/bootstrap pull request, then start a fresh Planning Agent context from merged repository files.
+Open a fresh chat, load the repository checkpoint, and resume guided intake from the next unresolved high-impact decision.
