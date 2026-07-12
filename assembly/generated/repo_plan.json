@@ -1,0 +1,40 @@
+{
+  "project_name": "Destructro Truck",
+  "repos": [
+    {
+      "name": "destructro-truck",
+      "purpose": "Single repository for the Godot game, deterministic domain logic, backend services, tools, tests, assets, and Assembly Line artifacts, with concrete file ownership to support safe parallel work.",
+      "contains": [
+        "project.godot, export_presets.cfg, and root build metadata owned by Integration/Release",
+        "src/core/contracts for versioned gameplay events, rulesets, resources, save schemas, run records, and API-facing DTOs owned by Contract Steward",
+        "src/core/domain for deterministic calculations and shared value objects owned by Contract Steward and approved domain maintainers",
+        "src/gameplay for truck physics adapter, launch, rotation, nudge, momentum, contact normalization, camera, and run viability owned by Core Gameplay and Physics",
+        "src/world for building/wreck runtime, aerial targets, pickups, deterministic schedules, level definitions, and level runtime owned by World Objects and Level Runtime",
+        "src/run for run orchestration, Survival/Timed rules, scoring, progression, upgrades, radar, achievements, statistics, save orchestration, and run-record assembly owned by Run Rules and Progression",
+        "src/ui for input action abstraction, presentation models, HUD, screens, settings, hints, localization, and audio/VFX adapters owned by UI/Input/Presentation",
+        "backend for leaderboard, validation, anonymous identity/progression reconciliation, crash intake, persistence adapters, and deployment files owned by Online Services and Release Infrastructure",
+        "assets for original assets, licensed generic assets, attribution ledger, and import metadata; final presentation changes coordinated through UI/Input/Presentation",
+        "levels for fixed shipped level data and reviewed candidate exports owned by World Objects and Level Runtime",
+        "tools for level candidate generation, schema validation, build/export, and developer utilities with ownership matching the consuming subsystem",
+        "tests/unit/core and tests/fixtures/contracts owned by Contract Steward",
+        "tests/unit/gameplay and tests/scenes/gameplay owned by Core Gameplay and Physics",
+        "tests/unit/world and tests/scenes/world owned by World Objects and Level Runtime",
+        "tests/unit/run and tests/integration/save owned by Run Rules and Progression",
+        "tests/ui owned by UI/Input/Presentation",
+        "tests/backend owned by Online Services and Release Infrastructure",
+        "tests/integration/cross_lane, tests/performance, and release acceptance evidence coordinated by Integration/Verification",
+        "assembly planning and lifecycle artifacts owned only by the active lifecycle agent"
+      ],
+      "depends_on": [],
+      "excludes": [
+        "Separate repositories for individual gameplay lanes during the MVP",
+        "Implementation code inside assembly planning directories",
+        "Direct UI dependencies on Godot physics nodes or mutable gameplay internals",
+        "Direct scoring/progression dependencies on scene-tree node paths",
+        "Backend requirements for ordinary offline gameplay",
+        "Cross-lane edits outside declared ownership without integration approval",
+        "Post-MVP replay, analytics, live-ops, modding, social, cloud-save, or account-system modules"
+      ]
+    }
+  ]
+}
