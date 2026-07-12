@@ -19,6 +19,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - MVP platform: Windows PC.
 - First post-MVP platform: Android, with mobile-aware controls and UI considered from the start.
 - Input architecture uses a unified action system. The Windows MVP supports both keyboard and gamepad, with gameplay actions routed through an abstraction that also supports future touch buttons, analog values, and press-versus-hold strength without redesigning gameplay logic.
+- Accessibility baseline includes remappable keyboard and gamepad controls, scalable UI and text, separate music and sound-effect volume controls, adjustable screen shake and flash intensity, subtitles or visual equivalents for meaningful audio cues, and gameplay information that never relies on color alone.
 - Multiplayer direction: asynchronous competition through comparable run results rather than shared real-time physics.
 - Run structure: multiple auto-generated levels whose layouts remain fixed across repeat playthroughs; variety comes from having several distinct levels rather than regenerating each run.
 - Player control during a run is deliberately limited: the launch determines most momentum, while the player may apply small nudges to the truck. Nudge strength/control authority can be improved through later-defined upgrades.
