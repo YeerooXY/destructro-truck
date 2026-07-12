@@ -23,6 +23,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Player control during a run is deliberately limited: the launch determines most momentum, while the player may apply small nudges to the truck. Nudge strength/control authority can be improved through later-defined upgrades.
 - A run ends when the truck loses enough momentum to become effectively immobilized. There is no truck damage or durability system in the MVP.
 - Buildings act as primary bounce/jump surfaces, but the truck may also bounce from the ground when impact speed and angle are sufficient.
+- Building destruction uses a hybrid model: authored breakable sections and impact thresholds provide predictable structure and scoring, while detached chunks and debris use real physics. Intact and partially destroyed sections may still serve as bounce surfaces.
 
 ## Next action
 
