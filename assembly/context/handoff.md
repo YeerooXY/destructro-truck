@@ -21,6 +21,8 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 - MVP platform: Windows PC.
 - First post-MVP platform: Android, with mobile-aware controls and UI considered from the start.
 - Primary MVP audience: score-chasing arcade players. The game should remain approachable for casual players while design decisions prioritize mastery, route optimization, upgrade strategy, repeat attempts, and leaderboard competition.
+- Typical successful runs should last roughly 5–8 minutes, giving enough room for routes, airborne chains, recovery moments, and upgrade expression without making ordinary retries exhausting.
+- The main survival-style run must not end because of a fixed time limit. Exceptionally skilled players may continue beyond the normal 5–8 minute target as long as they preserve momentum and remain viable. A separate timed efficiency mode, focused on maximizing results within a fixed duration, is a supported direction distinct from the longer survival format.
 - Input architecture uses a unified action system. The Windows MVP supports both keyboard and gamepad, with gameplay actions routed through an abstraction that also supports future touch buttons, analog values, and press-versus-hold strength without redesigning gameplay logic.
 - Accessibility baseline includes remappable keyboard and gamepad controls, scalable UI and text, separate music and sound-effect volume controls, adjustable screen shake and flash intensity, subtitles or visual equivalents for meaningful audio cues, and gameplay information that never relies on color alone.
 - Monetization direction: the complete game is free to play. Optional revenue may come from cosmetic-only items such as truck skins or visual customization and from a voluntary support-the-creator option. Paid or supporter content must never alter physics, scoring, progression power, gameplay resources, unlock requirements, leaderboard eligibility, or competitive advantage.
@@ -64,7 +66,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 
 ## Resume checkpoint
 
-- Last accepted decision: the primary MVP audience is score-chasing arcade players, while retaining enough accessibility for casual play.
+- Last accepted decision: normal successful runs target 5–8 minutes, but the survival-style mode has no hard time cap for players skilled enough to continue; a separate timed efficiency mode is also supported.
 - Intake is not yet formally closed or accepted as complete.
 - In the new chat, first read `assembly/context/NEW_CHAT_RESUME.md` and this file from branch `assembly/bootstrap-destructro-truck`.
 - Do not repeat settled questions.
