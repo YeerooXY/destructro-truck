@@ -31,6 +31,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Building destruction uses a hybrid model: authored breakable sections and impact thresholds provide predictable structure and scoring, while detached chunks and debris use real physics. Intact and partially destroyed sections may still serve as bounce surfaces.
 - Presentation: 2D side view with 2D gameplay physics.
 - Visual direction: clean original cartoon/vector art with bold silhouettes, simple scalable shapes, readable debris, and exaggerated impact effects. The style must remain clear on both Windows and Android-sized displays.
+- Content tone is family-friendly cartoon chaos. Environments are empty or stylized; destruction uses exaggerated crashes, dust clouds, sparks, and debris without blood, visible injured people, realistic suffering, or graphic consequences.
 - Engine and scripting language: Godot with GDScript.
 - Performance target uses scalable quality profiles. The Windows MVP and capable Android devices target a stable 60 FPS. Lower-powered Android devices may use a 30 FPS fallback with reduced debris counts, particles, background detail, and other cosmetic effects while preserving identical gameplay physics, scoring, collision rules, and leaderboard eligibility.
 - Scoring uses a composite model: destruction value is the base, with additional score from distance, consecutive building hits, difficult bounces, and launch accuracy. Earned money remains tied primarily to destruction value, while composite score is suitable for rankings and comparison.
