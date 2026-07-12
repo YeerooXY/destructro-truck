@@ -41,7 +41,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 - Mid-air rotation is always available while airborne and does not consume an energy resource. Rotational torque and responsiveness are deliberately capped so angular inertia and timing remain meaningful; permanent upgrades may improve the cap within balanced limits.
 - A run ends when the truck loses enough momentum to become effectively immobilized. There is no truck damage or durability system in the MVP.
 - Buildings act as primary bounce/jump surfaces, but the truck may also bounce from the ground when impact speed and angle are sufficient.
-- Building destruction uses a hybrid model: authored breakable sections and impact thresholds provide predictable structure and scoring, while detached chunks and debris use real physics. Intact and partially destroyed sections may still serve as bounce surfaces.
+- MVP buildings use a binary gameplay state: intact or destroyed. There are no intermediate damage states. A qualifying high-speed impact destroys the building immediately; sub-threshold contact leaves it intact.
 - MVP building content is limited to two building types. Their gameplay behavior is driven by reusable data rather than bespoke one-off logic. Early testing must use debug-style hitboxes and minimal placeholder UI/art; fully painted building art is not required before the destruction system is proven.
 - Presentation: 2D side view with 2D gameplay physics.
 - Visual direction: clean original cartoon/vector art with bold silhouettes, simple scalable shapes, readable debris, and exaggerated impact effects. The style must remain clear on both Windows and Android-sized displays.
@@ -91,7 +91,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 
 ## Resume checkpoint
 
-- Last accepted decision: the destruction MVP is limited to two data-driven building types and should be proven first with debug-style hitboxes and minimal placeholder UI/art rather than fully painted buildings.
+- Last accepted decision: buildings have only two gameplay states—intact and destroyed—with no intermediate damage stages.
 - Intake is not yet formally closed or accepted as complete.
 - In the new chat, first read `assembly/context/NEW_CHAT_RESUME.md` and this file from branch `assembly/bootstrap-destructro-truck`.
 - Do not repeat settled questions.
