@@ -40,7 +40,12 @@ The UI, Input, and Presentation Builder owns keyboard/gamepad action mapping, mo
 
 The Online Services and Release Infrastructure Builder owns leaderboard query/submission services, compact run-record plausibility validation, duplicate/replay/version checks, anonymous device-bound identity, progression-ledger reconciliation, one-time recovery-code transfer, crash-report intake, backend persistence and deployment, CI, Godot Windows export configuration, packaging, and release-build checks. It validates and persists accepted local results but does not own local score calculations, progression rewards, or run-eligibility rules. This lane begins lightly with contracts and fixtures, then becomes substantially active after run-record, scoring, and progression contracts stabilize.
 
+### Integration and Verification Agent
+
+**Approved scope:** Option B — verification owner with tightly scoped integration work.
+
+The Integration and Verification Agent owns cross-lane contract checks, integration harnesses, cross-lane tests, performance scenes, build verification, evidence review, wave-level acceptance checks, and the release acceptance checklist. It may wire approved components together and make tiny integration-only fixes when explicitly assigned, but it must not freely rewrite lane-owned implementation or become a catch-all feature owner. It is expected to receive many verification tasks throughout the project, especially at dependency-wave boundaries and release gates.
+
 ## Pending roles
 
-- Integration and Verification Agent
 - Red Team Verifier
