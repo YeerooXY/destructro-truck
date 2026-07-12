@@ -59,10 +59,11 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 - Launch system: launch speed is determined by a timing challenge from the beginning. Ramp angle is initially fixed; a permanent upgrade unlocks a second timing challenge that lets the player influence launch angle. Later upgrades may improve the usable angle range or timing forgiveness.
 - Leaderboards are separated by level and truck model. Within a truck's progression category, all permanent upgrade levels compete together, so a starter and fully upgraded version share the same board and progression provides a deliberate competitive incentive. A separate stock category uses a standardized version of that truck for fair skill comparison. With the one-truck MVP, this means progression and stock boards for each of the three levels.
 - Temporary run-specific boosts are allowed on Progression leaderboard attempts and disabled on Stock leaderboard attempts.
+- MVP acceptance proof requires a downloadable Windows build, recorded gameplay evidence, a manual acceptance checklist, and automated tests for deterministic scoring, progression transactions, save/load behavior, compact run-record validation, and other non-visual core logic. Extensive automated physics replay and broad end-to-end gameplay automation are not required for the MVP.
 
 ## Resume checkpoint
 
-- Last accepted decision: cosmetics use both earned and direct-purchase paths, with no randomized loot boxes.
+- Last accepted decision: MVP acceptance proof uses a playable Windows build, recorded gameplay, a manual checklist, and automated tests for core non-visual logic.
 - Intake is not yet formally closed or accepted as complete.
 - In the new chat, first read `assembly/context/NEW_CHAT_RESUME.md` and this file from branch `assembly/bootstrap-destructro-truck`.
 - Do not repeat settled questions.
@@ -71,4 +72,4 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 
 ## Next action
 
-Open a fresh chat, load the repository checkpoint, and resume guided intake from the next unresolved high-impact decision.
+Resume guided intake from the next unresolved high-impact product decision.
