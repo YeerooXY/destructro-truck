@@ -20,6 +20,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 - No proprietary code, names, artwork, audio, branding, or level layouts will be copied.
 - MVP platform: Windows PC.
 - First post-MVP platform: Android, with mobile-aware controls and UI considered from the start.
+- Primary MVP audience: score-chasing arcade players. The game should remain approachable for casual players while design decisions prioritize mastery, route optimization, upgrade strategy, repeat attempts, and leaderboard competition.
 - Input architecture uses a unified action system. The Windows MVP supports both keyboard and gamepad, with gameplay actions routed through an abstraction that also supports future touch buttons, analog values, and press-versus-hold strength without redesigning gameplay logic.
 - Accessibility baseline includes remappable keyboard and gamepad controls, scalable UI and text, separate music and sound-effect volume controls, adjustable screen shake and flash intensity, subtitles or visual equivalents for meaningful audio cues, and gameplay information that never relies on color alone.
 - Monetization direction: the complete game is free to play. Optional revenue may come from cosmetic-only items such as truck skins or visual customization and from a voluntary support-the-creator option. Paid or supporter content must never alter physics, scoring, progression power, gameplay resources, unlock requirements, leaderboard eligibility, or competitive advantage.
@@ -63,7 +64,7 @@ Guided requirements intake is paused at an explicit handoff checkpoint on `assem
 
 ## Resume checkpoint
 
-- Last accepted decision: MVP acceptance proof uses a playable Windows build, recorded gameplay, a manual checklist, and automated tests for core non-visual logic.
+- Last accepted decision: the primary MVP audience is score-chasing arcade players, while retaining enough accessibility for casual play.
 - Intake is not yet formally closed or accepted as complete.
 - In the new chat, first read `assembly/context/NEW_CHAT_RESUME.md` and this file from branch `assembly/bootstrap-destructro-truck`.
 - Do not repeat settled questions.
