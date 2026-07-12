@@ -25,6 +25,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Buildings act as primary bounce/jump surfaces, but the truck may also bounce from the ground when impact speed and angle are sufficient.
 - Building destruction uses a hybrid model: authored breakable sections and impact thresholds provide predictable structure and scoring, while detached chunks and debris use real physics. Intact and partially destroyed sections may still serve as bounce surfaces.
 - Presentation: 2D side view with 2D gameplay physics.
+- Engine and scripting language: Godot with GDScript.
 
 ## Next action
 
