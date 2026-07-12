@@ -1,0 +1,168 @@
+{
+  "schema_version": "0.1.0",
+  "project_slug": "destructro-truck",
+  "intake_mode": "guided",
+  "project_goal": "Create an original score-driven 2D arcade destruction game in which players convert momentum into destruction and destruction rewards back into momentum through increasingly skillful routing, progression, and repeat leaderboard attempts.",
+  "target_users": [
+    "Score-chasing arcade players",
+    "Players who enjoy route optimization and repeated mastery attempts",
+    "Casual players who want immediately understandable controls with a high skill ceiling"
+  ],
+  "mvp": {
+    "summary": "A complete offline-first Windows arcade game built in Godot with one truck, three fixed-layout levels, two building types, ground and aerial routing, Survival and Timed Efficiency modes, compact progression, local achievements/statistics, and anonymous online leaderboards.",
+    "must_have": [
+      "Windows PC build using Godot and GDScript",
+      "2D side-view gameplay with 2D physics",
+      "One truck with timing-based launch, always-available capped mid-air rotation, and limited directional nudge energy",
+      "Survival mode with no hard time cap and a typical successful run target of 5–8 minutes",
+      "Timed Efficiency mode using the same core physics and content with separate rules and leaderboards",
+      "One standard difficulty",
+      "Three fixed-layout levels selected and tuned from development-time generated candidates",
+      "One ground-level building layer and an aerial opportunity layer",
+      "Two data-driven building types with binary intact/destroyed states",
+      "Any truck contact destroys an intact building and removes a fixed amount of speed",
+      "One simple collidable wreck shape per destroyed building; smaller debris is visual only",
+      "Balloon targets and a compact set of rare aerial momentum opportunities",
+      "At least one special momentum-granting building variant using shared building behavior",
+      "Composite scoring based on destruction value plus distance, chains, bounces, and launch accuracy",
+      "Money tied primarily to destruction value",
+      "Permanent upgrades, a swappable rear equipment slot, and several temporary run boosts",
+      "Radar progression from crude warnings to useful route-planning information",
+      "Offline gameplay, progression, saves, achievements, statistics, and unlocks",
+      "Anonymous online per-level leaderboards with Stock and Progression categories",
+      "Compact run records and server-side plausibility validation rather than deterministic physics replay",
+      "Queued offline leaderboard submissions",
+      "One local profile with safe atomic save replacement and one automatic backup",
+      "Up to 10 local achievements",
+      "A compact single-screen statistics page",
+      "Keyboard and gamepad support through a unified mobile-aware action abstraction",
+      "Essential accessibility and settings options",
+      "One-time contextual hints instead of a dedicated tutorial",
+      "Functional, fast menus and optional Instant Restart",
+      "English-only launch text implemented through a localization-ready system",
+      "Compact gameplay-focused art, VFX, and audio scope",
+      "Opt-in automatic crash reporting",
+      "Developer-only debug tools excluded from public release builds",
+      "Downloadable Windows build, recorded gameplay proof, manual acceptance checklist, and automated tests for non-visual core logic"
+    ],
+    "postponed": [
+      "Android release",
+      "Full accounts, authentication, cloud saves, profiles, and synchronized cross-device progression",
+      "Multiple local profiles and save-slot management",
+      "Replay recording, playback, sharing, and replay-driven anti-cheat",
+      "Photo mode and automatic highlight capture",
+      "Daily or weekly challenges, seasons, live events, and live-operations systems",
+      "Gameplay analytics and player-behavior telemetry",
+      "Official mod support, custom content APIs, and Workshop integration",
+      "Dynamic weather, day/night variants, and seasonal presentation",
+      "Adaptive soundtrack, announcer, and cinematic audio",
+      "Cinematic menus, animated garage scenes, story, lore, dialogue, and cutscenes",
+      "Advanced graphics and enthusiast settings",
+      "Large cosmetic catalogues and animated cosmetic effects",
+      "Platform achievement integration",
+      "Social profiles, friends, chat, and rich player histories",
+      "Public pre-launch roadmap or committed season plan",
+      "Novelty cheat codes, which may only be considered later with achievements and leaderboard submissions disabled"
+    ]
+  },
+  "target_platforms": [
+    "Windows PC (MVP)",
+    "Android (first post-MVP platform)"
+  ],
+  "stack": {
+    "preference": "Godot with GDScript",
+    "recommendation": "Use Godot and GDScript for the Windows MVP, while keeping controls, UI scaling, performance budgets, and data contracts compatible with a later Android port.",
+    "options": [
+      {
+        "name": "Godot with GDScript",
+        "best_for": "Rapid 2D arcade prototyping, data-driven gameplay, cross-platform packaging, and an AI-heavy implementation workflow.",
+        "risks": [
+          "Arcade physics feel requires extensive playtesting and tuning",
+          "Network/backend services remain separate engineering concerns",
+          "Performance budgets must be enforced for later Android support"
+        ]
+      }
+    ],
+    "decision_status": "user_selected"
+  },
+  "existing_project": {
+    "state": "existing_repo",
+    "path": "YeerooXY/destructro-truck",
+    "notes": [
+      "The repository is initialized and uses the AI Assembly Line repository-first lifecycle.",
+      "Accepted requirements, planning, task decomposition, and implementation are separated by pull-request gates.",
+      "The product must remain an original spiritual successor and must not copy proprietary code, names, art, audio, branding, or level layouts."
+    ]
+  },
+  "tools": [
+    {
+      "name": "AI Assembly Line",
+      "path": "assembly/",
+      "configuration": "Repository-first lifecycle with separate requirements, planning, and task-decomposition pull requests.",
+      "notes": "Merged repository artifacts are authoritative; chat context is temporary."
+    }
+  ],
+  "team_mode": {
+    "humans": 2,
+    "ai_agents": 6,
+    "parallelization_goal": "Optimize for a flexible AI-heavy team with approximately 4–6 concurrent implementation agents, potentially supervised by two humans using the project at the same time. Define contracts and file ownership before parallel work."
+  },
+  "working_style": {
+    "task_size": "small",
+    "review_style": "Evidence-first review with a dedicated AI integration role. Contributors have local autonomy inside accepted subsystem contracts; the project owner resolves remaining ties. No contributor may silently move clearly post-MVP scope into the MVP.",
+    "proof_required": [
+      "Automated tests for deterministic non-visual core logic",
+      "Build output for Windows",
+      "Recorded gameplay evidence",
+      "Manual acceptance checklist",
+      "Benchmarks or focused prototypes when technical approaches conflict",
+      "Clear PR-level evidence for acceptance criteria"
+    ]
+  },
+  "constraints": [
+    "Protect the MVP aggressively; small-looking additions still require explicit scope approval.",
+    "Prototype every gameplay mechanic with placeholder assets before final art or polish.",
+    "Prefer reusable data-driven content over bespoke scripts.",
+    "Prioritize predictable arcade feel and player understanding over physical realism.",
+    "Permanent progression should expand planning, control, and tactical options rather than replace skill.",
+    "All gameplay and progression must remain available offline.",
+    "Internet use is limited to leaderboard retrieval/submission, opt-in crash reports, and a possible update check.",
+    "Gameplay rules, scoring, and physics remain equivalent across visual quality profiles.",
+    "Menus prioritize speed and function over spectacle.",
+    "The complete game is free to play; monetization is cosmetic-only or voluntary support.",
+    "No randomized paid rewards or gambling-like cosmetic mechanics.",
+    "No official replay, analytics, modding, live-ops, or social ecosystem in the MVP.",
+    "Planning must support 4–6 concurrent AI implementation agents with explicit contracts, dependencies, and file ownership.",
+    "Evidence beats opinion; when technically equivalent, fun wins."
+  ],
+  "safety_boundaries": [
+    "Family-friendly cartoon destruction only: no blood, visible injured people, realistic suffering, or graphic consequences.",
+    "Do not copy proprietary assets, source code, names, branding, audio, or level layouts from the inspiration.",
+    "Every external asset must have its source, author, license, permitted use, and attribution requirement recorded before inclusion.",
+    "Paid or supporter content must never change physics, scoring, progression power, resources, unlock requirements, leaderboard eligibility, or competitive advantage.",
+    "Crash reporting must be opt-in and exclude save files, screenshots, gameplay recordings, personal information, and continuous telemetry.",
+    "Public release builds must not expose developer cheats or debug controls."
+  ],
+  "assumptions": [
+    "Godot provides suitable 2D physics, input abstraction, Windows packaging, and later Android support.",
+    "Two building types and a small aerial object set are sufficient to prove the core loop before content expansion.",
+    "A simple authored wreck collider produces enough post-impact immersion without physical debris affecting competitive runs.",
+    "Fixed speed subtraction per destroyed building can be tuned into a readable resource-routing economy.",
+    "Compact run validation can reject obviously impossible leaderboard submissions without proving every run legitimate.",
+    "A dedicated AI integration role can assist multiple human contributors while preserving human approval authority.",
+    "Exact numerical balancing values, upgrade prices, thresholds, and content counts inside accepted caps will be determined through prototypes and playtesting during planning and implementation."
+  ],
+  "open_questions": [],
+  "acceptance_signals": [
+    "The launch, bounce, destruction, aerial recovery, and retry loop is fun with debug graphics and placeholder UI.",
+    "Players can understand momentum costs and improve their routes through practice.",
+    "Ground and aerial opportunities create meaningful recurring decisions without passive dead time.",
+    "Typical successful Survival runs cluster around 5–8 minutes while expert runs can continue beyond that without a hard cap.",
+    "Timed Efficiency offers a clearly distinct competitive objective without duplicating the physics or content stack.",
+    "Progression and radar upgrades expand tactical planning without eliminating the need for skill.",
+    "The three fixed levels, one truck, two building types, and compact object set feel like a complete game rather than a technology demo.",
+    "The Windows build runs reliably, saves safely, supports offline play, and submits eligible leaderboard records when connected.",
+    "Automated tests pass for scoring, progression transactions, save/load behavior, and compact run-record validation.",
+    "Human reviewers accept the requirements/bootstrap pull request as the authoritative MVP boundary."
+  ]
+}
