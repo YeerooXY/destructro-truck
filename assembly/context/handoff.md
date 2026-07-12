@@ -26,6 +26,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Building destruction uses a hybrid model: authored breakable sections and impact thresholds provide predictable structure and scoring, while detached chunks and debris use real physics. Intact and partially destroyed sections may still serve as bounce surfaces.
 - Presentation: 2D side view with 2D gameplay physics.
 - Engine and scripting language: Godot with GDScript.
+- Scoring uses a composite model: destruction value is the base, with additional score from distance, consecutive building hits, difficult bounces, and launch accuracy. Earned money remains tied primarily to destruction value, while composite score is suitable for rankings and comparison.
 
 ## Next action
 
