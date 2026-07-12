@@ -14,8 +14,12 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 
 - Public repository: `YeerooXY/destructro-truck`
 - Default branch: `main`
-- Project is a for-fun remake inspired by an existing Ninja Kiwi game, with additional ideas planned.
-- No permission has been given to copy proprietary code or assets.
+- Project direction: original spiritual successor inspired by an existing Ninja Kiwi truck-destruction game.
+- No proprietary code, names, artwork, audio, branding, or level layouts will be copied.
+- MVP platform: Windows PC.
+- First post-MVP platform: Android, with mobile-aware controls and UI considered from the start.
+- Multiplayer direction: asynchronous competition through comparable run results rather than shared real-time physics.
+- Run structure: multiple auto-generated levels whose layouts remain fixed across repeat playthroughs; variety comes from having several distinct levels rather than regenerating each run.
 
 ## Next action
 
