@@ -27,6 +27,7 @@ Repository ready; guided requirements intake is in progress on `assembly/bootstr
 - Presentation: 2D side view with 2D gameplay physics.
 - Engine and scripting language: Godot with GDScript.
 - Scoring uses a composite model: destruction value is the base, with additional score from distance, consecutive building hits, difficult bounces, and launch accuracy. Earned money remains tied primarily to destruction value, while composite score is suitable for rankings and comparison.
+- Progression is hybrid: most truck, launch, control, and equipment improvements are permanent, while temporary run-specific boosts add variability and tactical choices. The exact boost pool and acquisition method will be defined later.
 
 ## Next action
 
