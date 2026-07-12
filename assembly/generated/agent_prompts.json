@@ -1,366 +1,102 @@
 {
+  "schema_version": "0.2.0",
   "project_name": "Destructro Truck",
+  "concurrency_policy": {
+    "normal": "2-5 active agents",
+    "exception": "4-6 only when the dependency graph genuinely permits",
+    "rule": "Do not manufacture parallel work or keep every role active."
+  },
   "prompts": [
     {
       "prompt_id": "contract-steward",
       "role": "Contract Steward",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "src/core/contracts/**",
-        "src/core/domain/**",
-        "tests/unit/core/**",
-        "tests/fixtures/contracts/**",
-        "docs/contracts/**"
-      ],
-      "forbidden_files": [
-        "src/gameplay/**",
-        "src/world/**",
-        "src/run/**",
-        "src/ui/**",
-        "backend/**",
-        "assembly/requirements/**",
-        "assembly/design/**"
-      ],
-      "input_context_required": [
-        "Merged requirements and design principles",
-        "Accepted project_spec.json and repo_plan.json",
-        "Assigned contract or interface scope",
-        "Known consumers and required verification"
-      ],
+      "activation": "early_cross_cutting",
+      "allowed_files": ["src/core/contracts/**", "src/core/domain/**", "tests/unit/core/**", "tests/fixtures/contracts/**", "docs/contracts/**"],
       "task_boundaries": [
-        "Define versioned events, DTOs, resources, schemas, ruleset identifiers, save formats, run records, API payloads, and deterministic domain helpers before consumers implement against them.",
-        "Do not implement lane-specific gameplay, UI, or backend behavior.",
-        "Do not alter accepted product rules to simplify a contract.",
-        "Reject direct scene-tree coupling across subsystem boundaries."
-      ],
-      "output_required": [
-        "Schema or typed contract definitions",
-        "Compatibility/versioning notes",
-        "Consumer examples or fixtures where useful",
-        "Tests proving serialization and invariant behavior",
-        "Explicit handoff notes for dependent lanes"
-      ],
-      "verification_required": [
-        "Contract tests pass",
-        "Every field traces to an accepted requirement or documented implementation need",
-        "Backward/forward compatibility behavior is stated where persistence or network payloads are involved",
-        "No forbidden lane logic is introduced"
+        "Own shared versioned schemas, events, DTOs, serialization formats, value objects, and only small deterministic calculations genuinely shared by multiple lanes.",
+        "Publish contracts before dependent implementation begins.",
+        "Do not own lane-specific gameplay, scoring formulas, world behavior, UI behavior, or backend implementation."
       ]
     },
     {
       "prompt_id": "core-gameplay-physics",
       "role": "Core Gameplay and Physics Builder",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "src/gameplay/**",
-        "tests/unit/gameplay/**",
-        "tests/scenes/gameplay/**",
-        "assets/debug/gameplay/**"
-      ],
-      "forbidden_files": [
-        "src/core/contracts/** except through a separately reviewed contract change",
-        "src/world/**",
-        "src/run/**",
-        "src/ui/**",
-        "backend/**",
-        "assembly/**"
-      ],
-      "input_context_required": [
-        "Accepted gameplay and event contracts",
-        "Truck and ruleset configuration resources",
-        "Assigned physics behavior and manual playtest scenario",
-        "Performance and determinism constraints"
-      ],
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/gameplay/**", "tests/unit/gameplay/**", "tests/scenes/gameplay/**", "assets/debug/gameplay/**"],
       "task_boundaries": [
-        "Own truck launch, body/wheel physics adapter, mid-air rotation, nudge impulses, momentum accounting, normalized contacts, camera, and run viability signals.",
-        "Publish normalized events; do not calculate money, score, progression, achievements, or leaderboard outcomes.",
-        "Prefer predictable arcade behavior over physical realism.",
-        "Use debug shapes and placeholder assets until the core loop is accepted."
-      ],
-      "output_required": [
-        "Focused Godot scenes/scripts within owned files",
-        "Physics configuration resources",
-        "Automated checks for deterministic calculations around the physics adapter",
-        "Manual grey-box playtest evidence",
-        "Documented tuning parameters and known feel risks"
-      ],
-      "verification_required": [
-        "Launch, rotation, nudge, ground/wreck bounce, momentum loss application, and stop detection meet assigned acceptance criteria",
-        "Published events match accepted contracts",
-        "No scoring/progression/UI logic is embedded in physics nodes",
-        "Release behavior is unaffected by debug visualization toggles"
+        "Own the complete moment-to-moment truck runtime: body and wheels, launch, ground and wreck bounce, capped aerial rotation, nudge, momentum, normalized contacts, viability and stop detection, camera, debug tools, and grey-box feel tuning.",
+        "Publish normalized events and never calculate score, money, progression, achievements, world rewards, UI state, or leaderboard outcomes."
       ]
     },
     {
       "prompt_id": "world-level-runtime",
       "role": "World Objects and Level Runtime Builder",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "src/world/**",
-        "levels/**",
-        "tools/level_generation/**",
-        "tests/unit/world/**",
-        "tests/scenes/world/**",
-        "assets/debug/world/**"
-      ],
-      "forbidden_files": [
-        "src/core/contracts/** except through a separately reviewed contract change",
-        "src/gameplay/**",
-        "src/run/**",
-        "src/ui/**",
-        "backend/**",
-        "assembly/**"
-      ],
-      "input_context_required": [
-        "Accepted WorldObjectDefinition and GameplayEvent contracts",
-        "Normalized truck-contact interface",
-        "Level data format and deterministic schedule contract",
-        "Assigned object or level-runtime scope"
-      ],
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/world/**", "levels/**", "tools/level_generation/**", "tests/unit/world/**", "tests/scenes/world/**", "assets/debug/world/**"],
       "task_boundaries": [
-        "Own building intact-to-wreck transitions, fixed speed costs, visual-only debris hooks, special building impulses, aerial objects, pickups, deterministic schedules, and level loading.",
-        "Do not alter truck physics internals or score/progression state directly.",
-        "Use data variants before bespoke scripts.",
-        "Keep shipped levels fixed and runtime generation out of scope."
-      ],
-      "output_required": [
-        "Data-driven object resources and runtime adapters",
-        "Fixed level definitions or reviewed candidate exports",
-        "Deterministic schedule fixtures",
-        "World interaction tests and debug scenes",
-        "Handoff notes describing emitted events and resource exchanges"
-      ],
-      "verification_required": [
-        "Any truck contact destroys an intact building exactly once",
-        "Fixed speed costs and optional impulse rewards are applied through accepted interfaces",
-        "Wreck collider replacement is deterministic and smaller debris cannot affect gameplay",
-        "Moving-object schedules repeat identically for the same ruleset/level version"
+        "Own buildings, wrecks, special momentum structures, balloons, rare aerial targets, recharge objects and pickups, deterministic schedules, fixed level definitions and loading, development-time candidate generation, and world debug scenes.",
+        "Own no player-facing UI: no HUD, radar presentation, menus, icons, tooltips, or final presentation.",
+        "Emit normalized object and route events; do not calculate score, money, achievements, unlocks, or progression."
       ]
     },
     {
       "prompt_id": "run-progression",
       "role": "Run Rules, Scoring, and Progression Builder",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "src/run/**",
-        "tests/unit/run/**",
-        "tests/integration/save/**",
-        "tests/fixtures/run/**"
-      ],
-      "forbidden_files": [
-        "src/core/contracts/** except through a separately reviewed contract change",
-        "src/gameplay/**",
-        "src/world/**",
-        "src/ui/**",
-        "backend/**",
-        "assembly/**"
-      ],
-      "input_context_required": [
-        "Accepted gameplay-event, ruleset, profile, progression-transaction, save, and compact-run-record contracts",
-        "Assigned mode/scoring/progression scope",
-        "Versioned tuning data",
-        "Required deterministic fixtures"
-      ],
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/run/**", "tests/unit/run/**", "tests/integration/save/**", "tests/fixtures/run/**"],
       "task_boundaries": [
-        "Own Survival and Timed Efficiency orchestration, score and money calculation, combos, upgrades, equipment state, temporary boosts, radar capability state, achievements, statistics, unlocks, save orchestration, and compact run-record assembly.",
-        "Consume normalized events rather than inspecting physics or world nodes.",
-        "Do not implement online persistence or validation decisions.",
-        "Do not add progression resources or feature systems outside the accepted MVP."
-      ],
-      "output_required": [
-        "Deterministic domain implementations",
-        "Versioned tuning resources",
-        "Atomic save and backup behavior",
-        "Run-result and compact-record fixtures",
-        "Automated tests for formulas, transactions, unlocks, and eligibility"
-      ],
-      "verification_required": [
-        "Identical event sequences and ruleset versions produce identical domain results",
-        "Save corruption and backup recovery cases are tested",
-        "Stock and Progression eligibility rules are enforced",
-        "Temporary boosts remain disabled in Stock attempts",
-        "No network connection is required for gameplay or local progression"
+        "Own Survival and Timed Efficiency rules, lifecycle, scoring, money, combos, boosts, upgrades, equipment, radar capability progression, unlocks, achievements, statistics, atomic save and backup recovery, leaderboard eligibility, compact run-record assembly, and local offline submission queue.",
+        "Consume normalized events; never inspect physics or world nodes directly, render UI, or implement online services."
       ]
     },
     {
       "prompt_id": "ui-input-presentation",
       "role": "UI, Input, and Presentation Builder",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "src/ui/**",
-        "assets/ui/**",
-        "assets/audio/**",
-        "assets/vfx/**",
-        "assets/licenses/**",
-        "tests/ui/**",
-        "localization/**"
-      ],
-      "forbidden_files": [
-        "src/core/contracts/** except through a separately reviewed contract change",
-        "src/gameplay/**",
-        "src/world/**",
-        "src/run/**",
-        "backend/**",
-        "assembly/**"
-      ],
-      "input_context_required": [
-        "Accepted presentation models and input-action contracts",
-        "Screen/user-flow definitions",
-        "Accessibility and localization constraints",
-        "Assigned screen, HUD, input, audio, or VFX scope"
-      ],
+      "activation": "dependency_ready_lane",
+      "allowed_files": ["src/ui/**", "assets/ui/**", "assets/audio/**", "assets/vfx/**", "assets/licenses/**", "tests/ui/**", "localization/**"],
       "task_boundaries": [
-        "Own keyboard/gamepad action mapping, mobile-aware action abstraction, HUD, menus, screens, settings, contextual hints, localization hooks, and presentation adapters.",
-        "Render read-only state and emit commands; do not inspect or mutate physics/domain internals directly.",
-        "Keep menus functional and fast; no cinematic or animated-garage scope.",
-        "Presentation must never change competitive gameplay results."
-      ],
-      "output_required": [
-        "Focused scenes/scripts within owned files",
-        "Read-only presentation adapters",
-        "Accessible input and UI behavior",
-        "Licensed asset ledger updates where external assets are introduced",
-        "UI test evidence and screenshots/video where appropriate"
-      ],
-      "verification_required": [
-        "Keyboard and gamepad actions are functionally equivalent",
-        "Text/UI scale and reduced shake/flash settings work",
-        "Meaningful information is not color-only or audio-only",
-        "HUD remains readable at target speed and viewport sizes",
-        "No forbidden gameplay logic is duplicated in UI"
+        "Own keyboard and gamepad mapping, mobile-aware action abstraction, menus, HUD, launch feedback, resource meters, radar presentation, hints, settings, accessibility, localization-ready text, presentation models, audio and VFX adapters, and final UI integration.",
+        "Consume read-only state and emit commands; never become the source of truth for gameplay rules."
       ]
     },
     {
       "prompt_id": "online-release-infrastructure",
       "role": "Online Services and Release Infrastructure Builder",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "backend/**",
-        "tests/backend/**",
-        "tools/build/**",
-        "tools/release/**",
-        "export_presets.cfg",
-        ".github/workflows/**",
-        "docs/deployment/**"
-      ],
-      "forbidden_files": [
-        "src/gameplay/**",
-        "src/world/**",
-        "src/run/**",
-        "src/ui/**",
-        "assembly/**",
-        "accepted contract files except through separately reviewed changes"
-      ],
-      "input_context_required": [
-        "Accepted API, identity, progression-ledger, crash-report, and compact-run-record contracts",
-        "Assigned service or release scope",
-        "Threat and abuse cases",
-        "Deployment and privacy constraints"
-      ],
+      "activation": "light_early_then_dependency_ready_lane",
+      "allowed_files": ["backend/**", "tests/backend/**", "tools/build/**", "tools/release/**", "export_presets.cfg", ".github/workflows/**", "docs/deployment/**"],
       "task_boundaries": [
-        "Own leaderboard query/submission, plausibility validation, duplicate/replay/version checks, anonymous identity and progression reconciliation, recovery rotation, crash intake, CI, Windows export, and deployment boundaries.",
-        "Do not require network connectivity for gameplay, saves, upgrades, achievements, or level unlocks.",
-        "Do not silently add full accounts, cloud saves, analytics, social systems, or deterministic server physics replay.",
-        "Keep rejection reasons machine-readable and privacy boundaries explicit."
-      ],
-      "output_required": [
-        "Service implementation or deployment configuration within assigned scope",
-        "API/schema conformance tests",
-        "Abuse and rejection fixtures",
-        "Build/export proof",
-        "Operational notes and rollback/compatibility guidance"
-      ],
-      "verification_required": [
-        "Valid fixtures are accepted and invalid/replayed/impossible fixtures are rejected for documented reasons",
-        "Recovery rotation permits one active restored identity",
-        "Crash intake rejects disallowed payload fields",
-        "Windows release build succeeds and excludes development-only tools",
-        "Local gameplay remains operational when services are unavailable"
+        "Own leaderboard services, compact-run plausibility validation, duplicate, replay and version checks, anonymous identity, progression-ledger reconciliation, recovery-code transfer, crash intake, backend persistence and deployment, CI, Windows export, packaging, and release checks.",
+        "Start lightly with contracts and fixtures, then ramp up only after local run-record, scoring, and progression contracts stabilize.",
+        "Do not own local scoring, progression rewards, or eligibility rules."
       ]
     },
     {
       "prompt_id": "integration-verification",
       "role": "Integration and Verification Agent",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "tests/integration/cross_lane/**",
-        "tests/performance/**",
-        "docs/acceptance/**",
-        "tools/validation/**",
-        "assigned integration files explicitly listed by the task"
-      ],
-      "forbidden_files": [
-        "Unassigned lane-owned implementation files",
-        "assembly/requirements/**",
-        "assembly/design/**",
-        "Scope changes without owner approval"
-      ],
-      "input_context_required": [
-        "Accepted contracts and repo ownership plan",
-        "Changes from every participating lane",
-        "Task acceptance criteria and proof",
-        "Known integration risks"
-      ],
+      "activation": "on_demand_cross_cutting",
+      "allowed_files": ["tests/integration/cross_lane/**", "tests/performance/**", "docs/acceptance/**", "tools/validation/**", "explicitly assigned integration files only"],
       "task_boundaries": [
-        "Check cross-lane contract compatibility, integration behavior, build readiness, and evidence completeness.",
-        "Recommend corrections but do not override accepted product requirements.",
-        "Do not become a catch-all implementation owner.",
-        "Escalate unresolved technical conflicts with evidence to the project owner."
-      ],
-      "output_required": [
-        "Integration findings",
-        "Cross-lane test evidence",
-        "Build/performance reports",
-        "Clear merge recommendation or blocking issues",
-        "Acceptance-checklist updates"
-      ],
-      "verification_required": [
-        "Every finding references a contract, requirement, test, or reproducible behavior",
-        "No lane-owned files are changed without explicit scope",
-        "Critical-path integrations and release gates are tested",
-        "MVP boundary drift is surfaced"
+        "Own cross-lane checks, integration harnesses and tests, performance scenes, build verification, evidence review, wave-level acceptance, and release acceptance.",
+        "May wire approved components and make tiny explicitly assigned integration-only fixes.",
+        "Receive verification tasks throughout the project, especially at dependency-wave boundaries; never become a catch-all implementation owner."
       ]
     },
     {
       "prompt_id": "red-team-verifier",
       "role": "Red Team Verifier",
-      "target_repo": "destructro-truck",
-      "allowed_files": [
-        "Read access to any task-relevant file",
-        "docs/red_team/**",
-        "tests/red_team/** when explicitly assigned"
-      ],
-      "forbidden_files": [
-        "Unilateral edits to implementation files",
-        "Requirements or design-principle changes",
-        "Task approval or merge authority",
-        "New MVP feature creation"
-      ],
-      "input_context_required": [
-        "Selected task or integration diff",
-        "Relevant contracts and requirements",
-        "Acceptance criteria and submitted proof",
-        "Threat, abuse, scope, or failure focus"
-      ],
+      "activation": "risk_selected_cross_cutting",
+      "allowed_files": ["assembly/generated/red_team_review_index.json", "docs/red_team/reviews/**", "tests/red_team/** when explicitly assigned", "read access to selected task-relevant files"],
       "task_boundaries": [
-        "Adversarially inspect any selected task across any lane.",
-        "Probe exploits, nondeterminism, save/progression abuse, leaderboard cheating, privacy violations, scope drift, weak tests, and misleading proof.",
-        "Report evidence-based findings; do not rewrite scope or own ordinary implementation.",
-        "High-risk tasks and release candidates should receive red-team review; trivial isolated tasks need not."
-      ],
-      "output_required": [
-        "Finding severity",
-        "Reproduction or reasoning",
-        "Affected requirement or contract",
-        "Suggested correction",
-        "Required verification or retest"
-      ],
-      "verification_required": [
-        "Findings are concrete and traceable",
-        "No vague preference-only blockers",
-        "No unauthorized implementation or scope change",
-        "Reviewed attack surface matches the assigned task"
+        "Adversarially review selected tasks, pull requests, integration boundaries, completed backlog items, and release candidates for scope drift, cheating, nondeterminism, save or progression abuse, leaderboard exploits, privacy issues, weak tests, misleading proof, fragile architecture, performance failures, and competitive unfairness.",
+        "After Task Splitting, support backlog-crawl mode by reading the canonical backlog and review index, prioritizing completed unreviewed high-risk or highly depended-on work, and reviewing in topological then chronological order.",
+        "Record every review durably and never mark a finding resolved without re-verifying the fixing change.",
+        "Do not rewrite implementation freely, approve merges, change requirements, or invent MVP features."
       ]
     }
-  ]
+  ],
+  "common_requirements": {
+    "input_context": ["merged requirements and design principles", "accepted project_spec.json and repo_plan.json", "assigned scope and dependencies", "applicable contracts and acceptance criteria"],
+    "outputs": ["focused changes inside assigned ownership", "appropriate automated or manual evidence", "explicit dependency and contract handoff notes", "no hidden MVP expansion"],
+    "verification": ["acceptance criteria are traceable", "ownership boundaries are respected", "deterministic logic is tested where applicable", "debug-only behavior is excluded from public release"]
+  }
 }
