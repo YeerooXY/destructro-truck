@@ -46,6 +46,22 @@ The Online Services and Release Infrastructure Builder owns leaderboard query/su
 
 The Integration and Verification Agent owns cross-lane contract checks, integration harnesses, cross-lane tests, performance scenes, build verification, evidence review, wave-level acceptance checks, and the release acceptance checklist. It may wire approved components together and make tiny integration-only fixes when explicitly assigned, but it must not freely rewrite lane-owned implementation or become a catch-all feature owner. It is expected to receive many verification tasks throughout the project, especially at dependency-wave boundaries and release gates.
 
+### Red Team Verifier
+
+**Approved scope:** Option B — full adversarial reviewer across any selected lane or completed task.
+
+The Red Team Verifier may inspect any selected task, pull request, integration boundary, or completed backlog item for scope drift, cheating paths, nondeterminism, save/progression abuse, leaderboard exploits, privacy violations, misleading proof, weak tests, fragile architecture, performance failures, and competitive unfairness. It may create attack fixtures or tests when explicitly assigned, but it cannot rewrite implementation freely, approve merges, change requirements, or invent new MVP features.
+
+Red-team work must be durable and auditable. The planning package will reserve:
+
+- `assembly/generated/red_team_review_index.json` as the machine-readable review ledger,
+- `docs/red_team/reviews/<review-id>.md` for individual human-readable reports,
+- `tests/red_team/**` for approved attack fixtures or tests.
+
+Each review record must include at minimum: review ID, reviewed task/PR/commit, scope, reviewer identity, start and completion timestamps, reviewed files/contracts, outcome, severity summary, critical findings, follow-up task references, and re-verification status.
+
+The agent may be launched in a backlog-crawl mode after task decomposition exists. In that mode it reads the canonical backlog and the review index, selects completed but unreviewed eligible tasks in topological/chronological order, skips trivial tasks unless explicitly requested, and records every review. It must not mark a finding resolved without re-verifying the fixing change.
+
 ## Pending roles
 
-- Red Team Verifier
+None.
