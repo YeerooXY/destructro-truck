@@ -34,8 +34,13 @@ The Run Rules, Scoring, and Progression Builder owns Survival and Timed Efficien
 
 The UI, Input, and Presentation Builder owns keyboard/gamepad action mapping, mobile-aware input abstraction, menus, HUD, launch timing feedback, nudge and equipment meters, radar presentation, contextual hints, settings, accessibility, localization-ready text, player-facing presentation models, audio/VFX adapters, and final UI asset integration. It consumes read-only state and emits commands. It may transform state for display but must never become the source of truth for gameplay, scoring, upgrades, radar detection, world behavior, or leaderboard rules. This role is expected to receive many small tasks across several waves rather than one oversized implementation block.
 
+### Online Services and Release Infrastructure Builder
+
+**Approved scope:** Option B — online services plus release infrastructure.
+
+The Online Services and Release Infrastructure Builder owns leaderboard query/submission services, compact run-record plausibility validation, duplicate/replay/version checks, anonymous device-bound identity, progression-ledger reconciliation, one-time recovery-code transfer, crash-report intake, backend persistence and deployment, CI, Godot Windows export configuration, packaging, and release-build checks. It validates and persists accepted local results but does not own local score calculations, progression rewards, or run-eligibility rules. This lane begins lightly with contracts and fixtures, then becomes substantially active after run-record, scoring, and progression contracts stabilize.
+
 ## Pending roles
 
-- Online Services and Release Infrastructure Builder
 - Integration and Verification Agent
 - Red Team Verifier
