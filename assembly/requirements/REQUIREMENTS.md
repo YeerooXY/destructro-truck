@@ -1,6 +1,6 @@
 # Destructro Truck Requirements
 
-Status: accepted intake candidate, pending review and merge of the requirements/bootstrap pull request.
+Status: accepted through merged requirements PR #1. Planning PR #2 and task-splitting PR #3 are also merged. Current implementation status lives in `assembly/context/development.md`.
 
 ## Product vision
 

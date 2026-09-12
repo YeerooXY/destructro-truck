@@ -1,0 +1,129 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (3 steps)
+[   0% ] update_scripts_classes |
+[  25% ] update_scripts_classes |
+[  50% ] update_scripts_classes |
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started Scanning actions... (3 steps)
+[   0% ] _update_scan_actions | gameplay.png
+[  25% ] _update_scan_actions | menu.png
+[  50% ] _update_scan_actions | results.png
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started (Re)Importing Assets (3 steps)
+[   0% ] reimport | Preparing files to reimport...
+[  25% ] reimport | Preparing files to reimport...
+[  50% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Executing pre-reimport operations...
+[   0% ] reimport | gameplay.png
+[  25% ] reimport | menu.png
+[  50% ] reimport | results.png
+[  75% ] reimport | Finalizing Asset Import...
+[ DONE ] reimport
+
+[   0% ] reimport | Started (Re)Importing Assets (3 steps)
+[   0% ] reimport | Executing post-reimport operations...
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SUITE res://tests/unit/core/test_contracts.gd: PASS
+SUITE res://tests/unit/gameplay/test_physics.gd: PASS
+SUITE res://tests/unit/run/test_run_session.gd: PASS
+SUITE res://tests/unit/world/test_level.gd: PASS
+TEST_RESULT suites=4 failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PLAYABLE_RUN {"events":{"building_destroyed":8,"contact":22,"landed":7,"launch":1,"momentum_changed":11,"nudge_used":62,"target_collected":3,"viability_lost":1},"physics":{"angular_velocity_rad_s":0.0,"equipment_charge":0.0,"grounded":true,"momentum":0.0,"nudge_energy":36.6666607037187,"position":[7337.4833984375,543.17724609375],"rotation_rad":-0.00319775193929672,"run_time_s":14.2500000000003,"schema_id":"truck_snapshot.v1","velocity":[0.0,0.0],"viable":false},"run":{"best_combo":18,"combo":0,"destroyed_count":8,"distance_px":7179.1025390625,"elapsed_s":14.25,"money_earned":114,"ruleset":{"category_id":"stock","level_id":"debug_yard","level_version":"debug_yard_v1","mode_id":"survival","physics_tuning_version":"physics_debug_v1","ruleset_version":"ruleset_debug_v1","schema_id":"ruleset.v1","scoring_tuning_version":"scoring_debug_v1","truck_id":"truck_01"},"run_id":"yard_run_2","schema_id":"run_snapshot.v1","score_breakdown":{"aerial_chain":0,"bounce":611,"building_chain":1044,"destruction":1335,"distance":717,"launch":488},"score_total":4195,"state":"ended","time_remaining_s":null}}
+PLAYABLE_TEST failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PHYSICS_REGRESSION events=9 snapshots=97 final={"angular_velocity_rad_s":0.0,"equipment_charge":0.0,"grounded":true,"momentum":0.0,"nudge_energy":100.0,"position":[2151.45288085938,543.299987792969],"rotation_rad":-3.14159265358979,"run_time_s":8.11666666666665,"schema_id":"truck_snapshot.v1","velocity":[0.0,0.0],"viable":false}
+PHYSICS_RESULT failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ATTACK_LAUNCH_PAUSE {"elapsed_s":0.0666666666666667,"events":{"launch":1},"launch_ready":false,"state":"running"}
+ATTACK_DISCONNECT_PAUSED {"paused":true,"screen":"pause","state":"paused"}
+ATTACK_STALE_EVENT {"after_score":0,"before_score":0,"current_run_id":"yard_run_5","destroyed_count":0,"source_run_id":"yard_run_4"}
+ATTACK_PAUSED_WORLD {"consumed":false,"destroyed_count":0}
+ATTACK_RAPID_RESTART screen=gameplay
+RED_TEAM_PROTOTYPE failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] savepack | Started Packing (102 steps)
+[   1% ] savepack | Storing File: res://project_workspace.json
+[   6% ] savepack | Storing File: res://src/run/scoring_rules.gdc
+[  12% ] savepack | Storing File: res://src/ui/input_adapter.gdc
+[  17% ] savepack | Storing File: res://src/ui/presentation.gdc
+[  23% ] savepack | Storing File: res://src/world/world_object.gdc
+[  28% ] savepack | Storing File: res://src/world/level_runtime.gdc
+[  33% ] savepack | Storing File: res://src/bootstrap/game.gdc
+[  38% ] savepack | Storing File: res://.godot/exported/133200997/export-4184a8d87f09b98aa381ceb34dbba86c-main.scn
+[  44% ] savepack | Storing File: res://src/core/contracts/game_contracts.gdc
+[  50% ] savepack | Storing File: res://src/core/contracts/presentation_contracts.gdc
+[  55% ] savepack | Storing File: res://src/core/contracts/run_contracts.gdc
+[  61% ] savepack | Storing File: res://src/core/contracts/world_contracts.gdc
+[  66% ] savepack | Storing File: res://src/core/domain/contract_values.gdc
+[  71% ] savepack | Storing File: res://src/gameplay/physics_rules.gdc
+[  76% ] savepack | Storing File: res://levels/test_yard.json
+[  82% ] savepack | Storing File: res://src/gameplay/truck.gdc
+[  87% ] savepack | Storing File: res://src/gameplay/truck_camera.gdc
+[  93% ] savepack | Storing File: res://src/run/run_session.gdc
+[  93% ] savepack | Storing File: res://src/run/scoring_rules.gd.remap
+[  93% ] savepack | Storing File: res://src/ui/input_adapter.gd.remap
+[  93% ] savepack | Storing File: res://src/ui/presentation.gd.remap
+[  93% ] savepack | Storing File: res://src/world/world_object.gd.remap
+[  93% ] savepack | Storing File: res://src/world/level_runtime.gd.remap
+[  93% ] savepack | Storing File: res://src/bootstrap/game.gd.remap
+[  93% ] savepack | Storing File: res://src/bootstrap/main.tscn.remap
+[  93% ] savepack | Storing File: res://src/core/contracts/game_contracts.gd.remap
+[  93% ] savepack | Storing File: res://src/core/contracts/presentation_contracts.gd.remap
+[  93% ] savepack | Storing File: res://src/core/contracts/run_contracts.gd.remap
+[  93% ] savepack | Storing File: res://src/core/contracts/world_contracts.gd.remap
+[  93% ] savepack | Storing File: res://src/core/domain/contract_values.gd.remap
+[  93% ] savepack | Storing File: res://src/gameplay/physics_rules.gd.remap
+[  93% ] savepack | Storing File: res://src/gameplay/truck.gd.remap
+[  93% ] savepack | Storing File: res://src/gameplay/truck_camera.gd.remap
+[  93% ] savepack | Storing File: res://src/run/run_session.gd.remap
+[  93% ] savepack | Storing File: res://.godot/global_script_class_cache.cfg
+[  93% ] savepack | Storing File: res://.godot/uid_cache.bin
+[  93% ] savepack | Storing File: res://project.binary
+[ DONE ] savepack
+
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Exported engine and bundled dependency notices.
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PACKAGE_AUDIT PASS
+EXPORTED_STARTUP PASS (outside the source directory)
+
+
+Algorithm : SHA256
+Hash      : BBD09290E89EA4B22038D9D11B2144E06B6A184DF8B1D8AF25B79082C577488D
+Path      : <repository>\builds\windows\Destructro Truck.exe

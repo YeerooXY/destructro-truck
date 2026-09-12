@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.mp4 binary
+*.wav binary
+*.ogg binary
+*.exe binary
+*.zip binary
+*.log -whitespace

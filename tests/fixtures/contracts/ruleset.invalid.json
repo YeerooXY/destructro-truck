@@ -1,0 +1,11 @@
+{
+  "schema_id": "ruleset.v1",
+  "ruleset_version": "ruleset_debug_v1",
+  "physics_tuning_version": "physics_debug_v1",
+  "scoring_tuning_version": "scoring_debug_v1",
+  "level_id": "debug_yard",
+  "level_version": "debug_yard_v99",
+  "mode_id": "survival",
+  "category_id": "stock",
+  "truck_id": "truck_01"
+}

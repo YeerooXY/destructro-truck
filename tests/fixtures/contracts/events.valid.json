@@ -1,0 +1,28 @@
+[
+  {
+    "schema_id": "gameplay_event.v1",
+    "event_id": "run_01:0",
+    "run_id": "run_01",
+    "sequence": 0,
+    "event_type": "launch",
+    "run_time_s": 0,
+    "source_object_id": "",
+    "payload": {"accuracy": 0.9, "speed_px_s": 850, "angle_rad": -0.35}
+  },
+  {
+    "schema_id": "gameplay_event.v1",
+    "event_id": "run_01:1",
+    "run_id": "run_01",
+    "sequence": 1,
+    "event_type": "building_destroyed",
+    "run_time_s": 1,
+    "source_object_id": "shed_01",
+    "payload": {
+      "definition_id": "shed",
+      "destruction_value": 100,
+      "money_value": 10,
+      "combo_value": 1,
+      "resource_request": {"schema_id": "resource_request.v1", "source_object_id": "shed_01", "speed_cost": 70, "impulse": [0, 0], "nudge_refill": 0, "equipment_refill": 2}
+    }
+  }
+]

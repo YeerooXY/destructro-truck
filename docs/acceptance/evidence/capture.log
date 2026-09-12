@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 616.92 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Ti
+
+Movie Maker mode enabled, recording movie in 1280×720 @ 60 FPS...
+CAPTURE menu.png
+CAPTURE launch.png
+CAPTURE gameplay_120.png
+CAPTURE gameplay_300.png
+CAPTURE gameplay_600.png
+CAPTURE latest.png
+CAPTURE_RUN {"elapsed_s":10.2166666666667,"events":{"building_destroyed":5,"contact":16,"landed":8,"launch":1,"momentum_changed":6,"nudge_used":53,"target_collected":1,"viability_lost":1},"rejected_events":0,"state":"ended"}
+--------------------------------------------------------------------------------
+Done recording movie at path: C:/Users/7yeer/Projects/destructro-truck/artifacts/first-playable.avi
+849 frames at 60 FPS (movie length: 00:00:14:09), recorded in 00:00:07 (200% of real-time speed).
+CPU render time: 0.30 seconds (average: 0.35 ms/frame)
+GPU render time: 0.11 seconds (average: 0.13 ms/frame)
+Encoding time: 3.48 seconds (average: 4.09 ms/frame)
+--------------------------------------------------------------------------------

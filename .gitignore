@@ -1,0 +1,12 @@
+.godot/
+.tools/
+builds/
+artifacts/
+*.tmp
+*.log
+!docs/red_team/reviews/*.log
+!docs/acceptance/evidence/*.log
+.env
+.env.*
+!.env.example
+__pycache__/

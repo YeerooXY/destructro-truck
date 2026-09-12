@@ -1,0 +1,27 @@
+; Destructro Truck — first playable development build.
+config_version=5
+
+[application]
+config/name="Destructro Truck"
+config/version="0.1.0-prototype"
+run/main_scene="res://src/bootstrap/main.tscn"
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+environment/defaults/default_clear_color=Color(0.045, 0.064, 0.08, 1)
+
+[physics]
+common/physics_ticks_per_second=60
+2d/default_gravity=920.0
+
+[debug]
+gdscript/warnings/treat_warnings_as_errors=false

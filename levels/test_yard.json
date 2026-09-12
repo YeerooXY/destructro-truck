@@ -1,0 +1,547 @@
+{
+	"definitions": [
+		{
+			"building_type_id": "light",
+			"definition_id": "shed",
+			"exchange": {
+				"combo_value": 1.0,
+				"destruction_value": 100.0,
+				"equipment_refill": 0.0,
+				"impulse": [
+					0.0,
+					0.0
+				],
+				"money_value": 10,
+				"nudge_refill": 0.0,
+				"speed_cost": 65.0
+			},
+			"object_type": "building",
+			"schema_id": "world_object.v1",
+			"size": [
+				90.0,
+				90.0
+			],
+			"visual_profile": "debug_shed",
+			"wreck_polygon": [
+				[
+					-45,
+					45
+				],
+				[
+					10,
+					22
+				],
+				[
+					45,
+					45
+				]
+			]
+		},
+		{
+			"building_type_id": "heavy",
+			"definition_id": "warehouse",
+			"exchange": {
+				"combo_value": 1.0,
+				"destruction_value": 220.0,
+				"equipment_refill": 0.0,
+				"impulse": [
+					0.0,
+					0.0
+				],
+				"money_value": 22,
+				"nudge_refill": 0.0,
+				"speed_cost": 110.0
+			},
+			"object_type": "building",
+			"schema_id": "world_object.v1",
+			"size": [
+				128.0,
+				116.0
+			],
+			"visual_profile": "debug_warehouse",
+			"wreck_polygon": [
+				[
+					-64,
+					58
+				],
+				[
+					0,
+					24
+				],
+				[
+					64,
+					58
+				]
+			]
+		},
+		{
+			"building_type_id": "light",
+			"definition_id": "propane_shed",
+			"exchange": {
+				"combo_value": 1.0,
+				"destruction_value": 150.0,
+				"equipment_refill": 0.0,
+				"impulse": [
+					230.0,
+					-370.0
+				],
+				"money_value": 15,
+				"nudge_refill": 16.0,
+				"speed_cost": 50.0
+			},
+			"object_type": "building",
+			"schema_id": "world_object.v1",
+			"size": [
+				90.0,
+				90.0
+			],
+			"visual_profile": "debug_propane",
+			"wreck_polygon": [
+				[
+					-45,
+					45
+				],
+				[
+					10,
+					22
+				],
+				[
+					45,
+					45
+				]
+			]
+		},
+		{
+			"building_type_id": "",
+			"definition_id": "balloon",
+			"exchange": {
+				"combo_value": 1.0,
+				"destruction_value": 65.0,
+				"equipment_refill": 0.0,
+				"impulse": [
+					135.0,
+					-100.0
+				],
+				"money_value": 0,
+				"nudge_refill": 20.0,
+				"speed_cost": 0.0
+			},
+			"object_type": "balloon",
+			"schema_id": "world_object.v1",
+			"size": [
+				70.0,
+				70.0
+			],
+			"visual_profile": "debug_balloon",
+			"wreck_polygon": []
+		}
+	],
+	"ground_y": 560.0,
+	"layout_kind": "fixed",
+	"length_px": 12500.0,
+	"level_id": "debug_yard",
+	"level_version": "debug_yard_v1",
+	"objects": [
+		{
+			"definition_id": "shed",
+			"object_id": "building_00",
+			"position": [
+				680.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "propane_shed",
+			"object_id": "building_01",
+			"position": [
+				1350.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "warehouse",
+			"object_id": "building_02",
+			"position": [
+				2080.0,
+				502.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "shed",
+			"object_id": "building_03",
+			"position": [
+				2760.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "propane_shed",
+			"object_id": "building_04",
+			"position": [
+				3440.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "warehouse",
+			"object_id": "building_05",
+			"position": [
+				4380.0,
+				502.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "shed",
+			"object_id": "building_06",
+			"position": [
+				5110.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "propane_shed",
+			"object_id": "building_07",
+			"position": [
+				5770.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "warehouse",
+			"object_id": "building_08",
+			"position": [
+				6720.0,
+				502.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "shed",
+			"object_id": "building_09",
+			"position": [
+				7420.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "propane_shed",
+			"object_id": "building_10",
+			"position": [
+				8120.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "warehouse",
+			"object_id": "building_11",
+			"position": [
+				9040.0,
+				502.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "shed",
+			"object_id": "building_12",
+			"position": [
+				9720.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "propane_shed",
+			"object_id": "building_13",
+			"position": [
+				10350.0,
+				515.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "warehouse",
+			"object_id": "building_14",
+			"position": [
+				11350.0,
+				502.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_00",
+			"position": [
+				955.0,
+				430.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_01",
+			"position": [
+				1155.0,
+				360.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_02",
+			"position": [
+				1640.0,
+				330.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_03",
+			"position": [
+				1880.0,
+				280.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_04",
+			"position": [
+				2330.0,
+				435.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_05",
+			"position": [
+				3060.0,
+				425.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_06",
+			"position": [
+				3740.0,
+				310.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_07",
+			"position": [
+				4040.0,
+				270.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_08",
+			"position": [
+				4650.0,
+				430.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_09",
+			"position": [
+				5400.0,
+				420.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_10",
+			"position": [
+				6070.0,
+				325.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_11",
+			"position": [
+				6400.0,
+				275.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_12",
+			"position": [
+				7050.0,
+				425.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_13",
+			"position": [
+				7770.0,
+				410.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_14",
+			"position": [
+				8440.0,
+				320.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_15",
+			"position": [
+				8740.0,
+				270.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_16",
+			"position": [
+				9370.0,
+				425.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_17",
+			"position": [
+				10020.0,
+				420.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_18",
+			"position": [
+				10680.0,
+				320.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_19",
+			"position": [
+				11040.0,
+				285.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		},
+		{
+			"definition_id": "balloon",
+			"object_id": "balloon_20",
+			"position": [
+				11700.0,
+				440.0
+			],
+			"schedule": {
+				"kind": "static"
+			}
+		}
+	],
+	"schema_id": "level.v1",
+	"spawn_position": [
+		160.0,
+		520.0
+	]
+}

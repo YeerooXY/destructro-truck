@@ -2,7 +2,7 @@
   "schema_version": "0.2.0",
   "project_id": "destructro-truck",
   "name": "Destructro Truck",
-  "status": "task_split_review",
+  "status": "development_in_progress",
   "default_view": "overview",
   "repository": {
     "provider": "github",
@@ -44,14 +44,15 @@
   },
   "ai_guidance": {
     "onboarding_mode": "guided_pr",
-    "human_next_step": "Review and merge the Task Splitter pull request. After merge, begin development from dependency-ready tasks in the canonical backlog.",
+    "human_next_step": "Play and review the first playable prototype; see assembly/context/development.md for the build, evidence, and remaining gates.",
     "notes": [
       "Chat context is temporary; merged repository files are authoritative.",
       "The canonical backlog contains 114 tasks across eight agent roles.",
       "The dependency graph has zero missing references and zero circular dependencies.",
       "Task prefixes identify owning agents, not global execution order.",
       "Normal useful concurrency is 2-5 agents; use 4-6 only when dependencies are ready and file ownership is disjoint.",
-      "Do not start implementation until the Task Splitter pull request is merged."
+      "Requirements PR #1, planning PR #2, and Task Splitter PR #3 are merged. Development is authorized.",
+      "The first-playable prototype is not formal acceptance of milestone 7.6; its full prerequisite graph remains authoritative."
     ]
   }
 }

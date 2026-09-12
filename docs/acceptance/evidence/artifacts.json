@@ -1,0 +1,52 @@
+{
+    "recorded_at_utc":  "2026-09-12T10:47:37Z",
+    "scope":  "First playable prototype; no formal MVP, physical controller, or human handling acceptance",
+    "engine":  "4.7.2.stable.official.ed1daf0bf",
+    "platform":  "Windows x86_64",
+    "archive_entries":  [
+                            {
+                                "path":  "Destructro Truck.exe",
+                                "bytes":  109234760
+                            },
+                            {
+                                "path":  "READ ME.txt",
+                                "bytes":  3022
+                            },
+                            {
+                                "path":  "THIRD-PARTY-NOTICES.txt",
+                                "bytes":  113021
+                            }
+                        ],
+    "artifacts":  [
+                      {
+                          "path":  "builds/windows/Destructro Truck.exe",
+                          "bytes":  109234760,
+                          "sha256":  "bbd09290e89ea4b22038d9d11b2144e06b6a184df8b1d8af25b79082c577488d"
+                      },
+                      {
+                          "path":  "builds/Destructro-Truck-First-Playable.zip",
+                          "bytes":  38141062,
+                          "sha256":  "3385f2fee6ccc5fb48dfbc0cb39c3e19539c3be2a1025d0971e937ae4fd6fbd5"
+                      },
+                      {
+                          "path":  "docs/acceptance/evidence/first-playable.mp4",
+                          "bytes":  846429,
+                          "sha256":  "1d7a35c39e802cd2c4628ac3380a60bc1754bf0dc2226a3b80ce974382683cfc"
+                      },
+                      {
+                          "path":  "docs/acceptance/evidence/menu.png",
+                          "bytes":  46114,
+                          "sha256":  "2acd264b933cd537c7920a93e185d72bdcfbe110d7c248e036520ee480df60f4"
+                      },
+                      {
+                          "path":  "docs/acceptance/evidence/gameplay.png",
+                          "bytes":  32449,
+                          "sha256":  "52ce215e2dc96f9cf1836b097018b0e4b6727479f15b1fa398d8ad00b6c874bb"
+                      },
+                      {
+                          "path":  "docs/acceptance/evidence/results.png",
+                          "bytes":  62448,
+                          "sha256":  "fe1e940bdc143605088c522023cc96703de82953131116a66e6e6280cba192e3"
+                      }
+                  ]
+}
