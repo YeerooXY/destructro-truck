@@ -3,6 +3,8 @@
 The owner authorized implementation after the feasibility review. Requirements PR
 #1, planning PR #2 and task-splitting PR #3 are merged. Implementation starts from
 commit `02ce8ecc629f3bcc7390c9a66137d3880b275689` on branch `ai/first-playable`.
+The implementation is proposed in [draft PR #4](https://github.com/YeerooXY/destructro-truck/pull/4).
+The recorded build's source commit is `cd2c8ec3c2f619c66f3047d957ff437fe162e31b`.
 
 Current focus: contract foundation, Windows build/test tooling, and an early
 playable physics prototype using original placeholder shapes. No final art or

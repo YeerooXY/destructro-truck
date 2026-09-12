@@ -1,6 +1,7 @@
 {
     "recorded_at_utc":  "2026-09-12T10:47:37Z",
     "scope":  "First playable prototype; no formal MVP, physical controller, or human handling acceptance",
+    "source_commit":  "cd2c8ec3c2f619c66f3047d957ff437fe162e31b",
     "engine":  "4.7.2.stable.official.ed1daf0bf",
     "platform":  "Windows x86_64",
     "archive_entries":  [
