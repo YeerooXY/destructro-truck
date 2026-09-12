@@ -1,0 +1,24 @@
+{
+  "schema_id": "run_result.v1",
+  "run_id": "run_01",
+  "ruleset": {
+    "schema_id": "ruleset.v1",
+    "ruleset_version": "ruleset_debug_v1",
+    "physics_tuning_version": "physics_debug_v1",
+    "scoring_tuning_version": "scoring_debug_v1",
+    "level_id": "debug_yard",
+    "level_version": "debug_yard_v1",
+    "mode_id": "survival",
+    "category_id": "stock",
+    "truck_id": "truck_01"
+  },
+  "end_reason": "momentum_depleted",
+  "elapsed_s": 45.5,
+  "score_total": 1200,
+  "score_breakdown": {"destruction": 800, "distance": 100, "building_chain": 100, "bounce": 50, "aerial_chain": 100, "launch": 50},
+  "money_earned": 80,
+  "distance_px": 12000,
+  "destroyed_count": 8,
+  "best_combo": 4,
+  "eligibility": {"eligible": false, "reasons": ["debug_build"]}
+}

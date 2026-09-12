@@ -1,4 +1,8 @@
-# Destructro Truck Handoff
+# Historical requirements handoff
+
+Requirements PR #1, planning PR #2, and task-splitting PR #3 are merged.
+This file preserves the intake handoff. Current execution state lives in
+`assembly/context/development.md`; the approval instructions below are historical.
 
 ## Current lifecycle phase
 

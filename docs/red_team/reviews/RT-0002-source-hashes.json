@@ -1,0 +1,62 @@
+﻿[
+    {
+        "path":  "src/bootstrap/game.gd",
+        "sha256":  "43AA5F8AD8050158D916FC313EA2367A72668824E3895E30B7173DCD7AF568E5"
+    },
+    {
+        "path":  "src/ui/input_adapter.gd",
+        "sha256":  "EF2573796E29244156F6293B9FD498597E92F7F4802AAF44878CB723F4BA4FD8"
+    },
+    {
+        "path":  "src/ui/presentation.gd",
+        "sha256":  "40D51512CCFCC4AFB953F45629A0A7513E902DE63B02A131BEF7ED7612873794"
+    },
+    {
+        "path":  "src/world/level_runtime.gd",
+        "sha256":  "9384568E265A2227BF7A28136CE7497698633779499C309361F4E8751FDF9752"
+    },
+    {
+        "path":  "src/world/world_object.gd",
+        "sha256":  "EE561172A41B3DAAB1D09E93865FB589E1AD107CDFC0E4BE997E51D4FC3E7FC0"
+    },
+    {
+        "path":  "src/run/run_session.gd",
+        "sha256":  "050D4D186E612E4717B633EFC1D8EB84D6CB9C2AD7C69AC2187132E71BCD6011"
+    },
+    {
+        "path":  "src/run/scoring_rules.gd",
+        "sha256":  "C2B478A9E3785C792D511E43555217C60C5E67776B1181DDCDB6E55E77BED5E4"
+    },
+    {
+        "path":  "src/gameplay/truck.gd",
+        "sha256":  "CE46A309EA46980FBDBFF5B19B4FFA322B003F3F21C7BC1AE9EBA8F2BE1FF733"
+    },
+    {
+        "path":  "src/gameplay/physics_rules.gd",
+        "sha256":  "DAAE6191F5DC37BE15DA71F61F772D6827484BA71553E947F35F0034802F1854"
+    },
+    {
+        "path":  "src/core/contracts/game_contracts.gd",
+        "sha256":  "1BA5ED6FB0E2892238D9B22607C03AD43D2B5F96FC6EECA5B7132DE1836B1879"
+    },
+    {
+        "path":  "src/core/contracts/run_contracts.gd",
+        "sha256":  "4BFADD9F986EBA68983E40660A28DFE048FD5C8B817A4C723CF00717F0072CAE"
+    },
+    {
+        "path":  "export_presets.cfg",
+        "sha256":  "27828120F0C7E0A7A723D161DB72EADCDB9EA365DE4CB912D97D5E36E217925D"
+    },
+    {
+        "path":  "tools/build/check.ps1",
+        "sha256":  "FF4E4226D56352993CDE9D50F36B32A1C80A31EBD541F5829291BA3789AEFE9D"
+    },
+    {
+        "path":  "tools/build/export.ps1",
+        "sha256":  "345CFA21F81C2C0E6DFC17CF78E8CD8B4942A70B1B601C87D94E2658FF0E04DB"
+    },
+    {
+        "path":  "tests/integration/test_playable.gd",
+        "sha256":  "48EEE7D31769941E7F8482B9363848C42BCC1BC13A56361CB681CBFC38C0C475"
+    }
+]

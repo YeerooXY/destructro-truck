@@ -1,4 +1,11 @@
-# New Chat Resume — Destructro Truck Planning
+# Resume routing — read current development state first
+
+Requirements PR #1, planning PR #2, and task-splitting PR #3 have been merged.
+The notes below are historical planning context, not current execution instructions.
+Read `assembly/context/development.md`, `project_workspace.json`, and the accepted
+backlog for current work. Do not restart intake, planning, or task splitting.
+
+# Historical New Chat Resume — Destructro Truck Planning
 
 ## Repository checkpoint
 

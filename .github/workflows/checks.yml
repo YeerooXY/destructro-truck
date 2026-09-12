@@ -1,0 +1,19 @@
+name: Godot checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up pinned Godot
+        shell: pwsh
+        run: ./tools/build/setup.ps1
+      - name: Import and run tests
+        shell: pwsh
+        run: ./tools/build/check.ps1

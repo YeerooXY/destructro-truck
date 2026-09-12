@@ -1,9 +1,377 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "project_id": "destructro-truck",
   "planning_run_id": "destructro-mvp-v1",
-  "status": "empty_scaffold",
-  "reviews": [],
+  "status": "initialized",
+  "workflow": {
+    "setup_task_id": "8.1",
+    "initialized_at": "2026-09-12T10:04:44Z",
+    "instructions": "docs/red_team/README.md",
+    "review_template": "docs/red_team/reviews/TEMPLATE.md",
+    "validator": "docs/red_team/validate_ledger.ps1",
+    "setup_scope": "Review procedure, durable state, and consistency validation only. No implementation, milestone, or release acceptance is claimed.",
+    "schema_change": "0.2.0 retains prior required review fields and adds typed review scope, explicit findings, and separate re-verification events."
+  },
+  "reviews": [
+    {
+      "review_id": "RT-0001",
+      "review_kind": "planning",
+      "reviewed_task_pr_or_commit": {
+        "task_ids": [
+          "7.6",
+          "1.9",
+          "4.13",
+          "4.14",
+          "5.7",
+          "5.10",
+          "7.1",
+          "8.2"
+        ],
+        "commit": "02ce8ecc629f3bcc7390c9a66137d3880b275689",
+        "pr_url": null,
+        "no_pr_reason": "Local read-only planning inspection assigned alongside task 8.1; no review PR was created.",
+        "working_tree_state": "Canonical backlog and Agent 1/4/5/7 task files had no diff from the stated commit at inspection. Concurrent foundation implementation was excluded."
+      },
+      "scope": "Inspect the accepted first-playable dependency path to 7.6 and identify planning contradictions and later adversarial targets; no implemented product was reviewed.",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "started_at": "2026-09-12T10:04:44Z",
+      "completed_at": "2026-09-12T10:12:33Z",
+      "reviewed_files_and_contracts": [
+        "AGENTS.md",
+        "assembly/generated/agent_prompts.json",
+        "assembly/generated/task_backlog.json",
+        "assembly/generated/project_spec.json",
+        "assembly/generated/repo_plan.json",
+        "assembly/requirements/REQUIREMENTS.md",
+        "assembly/design/DESIGN_PRINCIPLES.md",
+        "assembly/planning_runs/destructro-mvp-v1/HANDOFF.md",
+        "assembly/task_split_runs/destructro-mvp-v1/HANDOFF.md",
+        "assembly/task_split_runs/destructro-mvp-v1/DEPENDENCY_AUDIT.md",
+        "assembly/task_split_runs/destructro-mvp-v1/agent_1_contract_steward.md",
+        "assembly/task_split_runs/destructro-mvp-v1/agent_2_core_gameplay_physics.md",
+        "assembly/task_split_runs/destructro-mvp-v1/agent_3_world_level_runtime.md",
+        "assembly/task_split_runs/destructro-mvp-v1/agent_4_run_rules_scoring_progression.md",
+        "assembly/task_split_runs/destructro-mvp-v1/agent_5_ui_input_presentation.md",
+        "assembly/task_split_runs/destructro-mvp-v1/agent_7_integration_verification.md",
+        "assembly/task_split_runs/destructro-mvp-v1/agent_8_red_team.md"
+      ],
+      "report_path": "docs/red_team/reviews/RT-0001-first-playable-plan.md",
+      "evidence": [
+        "PowerShell recursive traversal of canonical depends_on: 7.6 has 57 ancestors; reproduction and exact membership results are in the report.",
+        "git rev-parse HEAD returned 02ce8ecc629f3bcc7390c9a66137d3880b275689; git diff for the relevant backlog and task files was empty.",
+        "Direct comparison of Agent 1 Wave guidance with the 7.6 -> 5.10 -> 4.14 -> 1.9/4.13 canonical prerequisite chain."
+      ],
+      "outcome": "findings",
+      "severity_summary": {
+        "critical": 0,
+        "high": 1,
+        "medium": 1,
+        "low": 0
+      },
+      "critical_findings": [],
+      "follow_up_task_references": [
+        "RT-0001-F1-FIX",
+        "RT-0001-F2-FIX"
+      ],
+      "reverification_status": "pending",
+      "release_recommendation": "Not assessed: this planning inspection supplies no product or release acceptance evidence.",
+      "findings": [
+        {
+          "finding_id": "RT-0001-F1",
+          "title": "Compact-record and save prerequisites conflict with first-playable wave guidance",
+          "severity": "high",
+          "classification": "planning",
+          "status": "open",
+          "owner": "Dispatch / active lifecycle owner, coordinating Agents 1, 4, 5, and 7",
+          "expected_behavior": "First-playable execution and its acceptance claims must agree with both the canonical dependency graph and accepted milestone guidance.",
+          "reproduction": "Traverse 7.6 -> 5.10 -> 4.14 -> 1.9 and 4.13 in task_backlog.json. Compare Agent 1 Wave guidance: 1.9-1.13 must not block the first playable.",
+          "evidence": "docs/red_team/reviews/RT-0001-first-playable-plan.md#rt-0001-f1-later-compact-record-work-blocks-the-first-playable",
+          "follow_up_reference": "RT-0001-F1-FIX",
+          "follow_up_scope": "Reconcile milestone wording and canonical dependencies through a reviewed lifecycle change, or honor all current dependencies and identify an earlier prototype as partial. Do not silently claim 7.6 acceptance.",
+          "fix_reference": null,
+          "fix_commit_or_artifact": null,
+          "fix_claim_evidence": null,
+          "reverification_event_id": null
+        },
+        {
+          "finding_id": "RT-0001-F2",
+          "title": "Playable dependency path does not enforce foundation and contract review coverage",
+          "severity": "medium",
+          "classification": "evidence_gap",
+          "status": "open",
+          "owner": "Dispatch / Agent 7, coordinating Agent 8",
+          "expected_behavior": "Existing foundation and early contract checks have explicit accepted evidence before their coverage is claimed for broad dependent work.",
+          "reproduction": "Traverse 7.6 ancestors: 7.1, 6.2, and 8.2 are absent, despite foundation-first milestone guidance and 8.2 early ambiguity review criteria.",
+          "evidence": "docs/red_team/reviews/RT-0001-first-playable-plan.md#rt-0001-f2-foundation-and-contract-review-are-not-enforced-by-the-playable-path",
+          "follow_up_reference": "RT-0001-F2-FIX",
+          "follow_up_scope": "Make existing checks explicit in execution handoff and retain accepted task proof. Route any needed graph edit through the lifecycle owner; do not treat an updated graph as evidence of a completed check.",
+          "fix_reference": null,
+          "fix_commit_or_artifact": null,
+          "fix_claim_evidence": null,
+          "reverification_event_id": null
+        }
+      ]
+    },
+    {
+      "review_id": "RT-0002",
+      "review_kind": "integration",
+      "reviewed_task_pr_or_commit": {
+        "task_ids": [
+          "7.2",
+          "7.3",
+          "7.4",
+          "7.5",
+          "7.6",
+          "8.3"
+        ],
+        "commit": "02ce8ecc629f3bcc7390c9a66137d3880b275689",
+        "pr_url": null,
+        "no_pr_reason": "Explicitly assigned bounded prototype review of uncommitted local implementation; no review PR existed.",
+        "working_tree_state": "Uncommitted implementation pinned by docs/red_team/reviews/RT-0002-source-hashes.json; fixing revision pinned by RT-0002-fixed-source-hashes.json. This does not accept canonical 7.6 or 8.3."
+      },
+      "scope": "Attack the actual first-playable prototype's pause/restart/event boundaries and inspect export configuration. No full MVP, physical-controller, public-package, or canonical milestone acceptance.",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "started_at": "2026-09-12T10:28:03Z",
+      "completed_at": "2026-09-12T10:28:48Z",
+      "reviewed_files_and_contracts": [
+        "src/bootstrap/game.gd",
+        "src/ui/input_adapter.gd",
+        "src/ui/presentation.gd",
+        "src/world/level_runtime.gd",
+        "src/world/world_object.gd",
+        "src/run/run_session.gd",
+        "src/run/scoring_rules.gd",
+        "src/gameplay/truck.gd",
+        "src/gameplay/physics_rules.gd",
+        "src/core/contracts/game_contracts.gd",
+        "src/core/contracts/run_contracts.gd",
+        "export_presets.cfg",
+        "tools/build/check.ps1",
+        "tools/build/export.ps1",
+        "tests/integration/test_playable.gd",
+        "tests/red_team/test_prototype_boundaries.gd",
+        ".github/workflows/checks.yml"
+      ],
+      "report_path": "docs/red_team/reviews/RT-0002-prototype-boundaries.md",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-source-hashes.json",
+        "docs/red_team/reviews/RT-0002-initial-attacks.log",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes.json",
+        "docs/red_team/reviews/RT-0002-reverification-1.log",
+        "tests/red_team/test_prototype_boundaries.gd SHA256 FB9B29D294414AE2C069FD39D6750E7098652F556CC6060CDE9AFC49A8B9EAD3",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json",
+        "docs/red_team/reviews/RT-0002-reverification-2.log"
+      ],
+      "outcome": "findings",
+      "severity_summary": {
+        "critical": 0,
+        "high": 1,
+        "medium": 2,
+        "low": 1
+      },
+      "critical_findings": [],
+      "follow_up_task_references": [
+        "RT-0002-F1-FIX",
+        "RT-0002-F2-FIX",
+        "RT-0002-F3-FIX",
+        "RT-0002-F4-FIX"
+      ],
+      "reverification_status": "complete",
+      "release_recommendation": "No remaining observed failures in the attacked prototype boundaries after re-verification. Full-release and actual public-package acceptance are outside scope.",
+      "findings": [
+        {
+          "finding_id": "RT-0002-F1",
+          "title": "Immediate pause discards the authoritative queued launch event",
+          "severity": "high",
+          "classification": "product_defect",
+          "status": "resolved",
+          "owner": "Agent 2, coordinating bootstrap integration",
+          "expected_behavior": "A launch accepted before pause remains queued and reaches the run lifecycle once after resume.",
+          "reproduction": "Start Survival; send launch; pause before the next physics callback; wait three physics frames; resume; wait five frames. Originally session remains ready/elapsed 0 while truck launch_ready is false.",
+          "evidence": "docs/red_team/reviews/RT-0002-initial-attacks.log; docs/red_team/reviews/RT-0002-prototype-boundaries.md",
+          "follow_up_reference": "RT-0002-F1-FIX",
+          "follow_up_scope": "Retain queued authoritative events while simulation is disabled and preserve unprocessed events if publication pauses inside a callback.",
+          "fix_reference": "RT-0002-F1-FIX",
+          "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+          "fix_claim_evidence": "Owner changes are described in docs/red_team/reviews/RT-0002-prototype-boundaries.md and identified by original/fixing source manifests.",
+          "reverification_event_id": "RV-0005"
+        },
+        {
+          "finding_id": "RT-0002-F2",
+          "title": "Controller disconnect resumes an already paused run",
+          "severity": "medium",
+          "classification": "product_defect",
+          "status": "resolved",
+          "owner": "Agent 5, coordinating bootstrap integration",
+          "expected_behavior": "Controller loss pauses gameplay idempotently and leaves an already paused game paused.",
+          "reproduction": "Launch; pause; call input_adapter._connection_changed(0, false). Originally paused becomes false, screen gameplay, session running.",
+          "evidence": "docs/red_team/reviews/RT-0002-initial-attacks.log; docs/red_team/reviews/RT-0002-prototype-boundaries.md",
+          "follow_up_reference": "RT-0002-F2-FIX",
+          "follow_up_scope": "Use a distinct idempotent disconnect pause request instead of the player pause toggle.",
+          "fix_reference": "RT-0002-F2-FIX",
+          "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+          "fix_claim_evidence": "Owner changes are described in docs/red_team/reviews/RT-0002-prototype-boundaries.md and identified by original/fixing source manifests.",
+          "reverification_event_id": "RV-0006"
+        },
+        {
+          "finding_id": "RT-0002-F3",
+          "title": "Coordinator overwrites stale run identity and awards an old event",
+          "severity": "medium",
+          "classification": "product_defect",
+          "status": "resolved",
+          "owner": "Bootstrap integration, coordinating Agents 3 and 4",
+          "expected_behavior": "An event from a previous run cannot enter the current run stream or award it points.",
+          "reproduction": "Create a valid building event for yard_run_4; restart and launch yard_run_5; deliver the old event to bootstrap._event. Originally it grants 100 points and one destroyed building.",
+          "evidence": "docs/red_team/reviews/RT-0002-initial-attacks.log; docs/red_team/reviews/RT-0002-prototype-boundaries.md",
+          "follow_up_reference": "RT-0002-F3-FIX",
+          "follow_up_scope": "Validate the original producer envelope and reject mismatched run identity before constructing a globally ordered event.",
+          "fix_reference": "RT-0002-F3-FIX",
+          "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+          "fix_claim_evidence": "Owner changes are described in docs/red_team/reviews/RT-0002-prototype-boundaries.md and identified by original/fixing source manifests.",
+          "reverification_event_id": "RV-0007"
+        },
+        {
+          "finding_id": "RT-0002-F4",
+          "title": "Same-frame restarts remove an already detached overlay",
+          "severity": "low",
+          "classification": "product_defect",
+          "status": "resolved",
+          "owner": "Agent 5",
+          "expected_behavior": "Rapid restarts remove transient UI once without engine ownership errors.",
+          "reproduction": "Start/restart before the next frame frees a removed overlay. Original attack log shows two p_child->data.parent != this errors from show_gameplay/remove_child.",
+          "evidence": "docs/red_team/reviews/RT-0002-initial-attacks.log; docs/red_team/reviews/RT-0002-prototype-boundaries.md",
+          "follow_up_reference": "RT-0002-F4-FIX",
+          "follow_up_scope": "Clear the overlay reference when detaching/queuing it so repeated starts cannot remove it twice.",
+          "fix_reference": "RT-0002-F4-FIX",
+          "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+          "fix_claim_evidence": "Owner changes are described in docs/red_team/reviews/RT-0002-prototype-boundaries.md and identified by original/fixing source manifests.",
+          "reverification_event_id": "RV-0008"
+        }
+      ]
+    }
+  ],
+  "reverification_events": [
+    {
+      "event_id": "RV-0001",
+      "finding_id": "RT-0002-F1",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F1-FIX",
+      "fix_commit_or_artifact": "sha256:04C57B23948CCEC93F0EC2BE45F0EF1CD752AD5BFAE4B41C2D2E25F93DBAE6B5 (docs/red_team/reviews/RT-0002-fixed-source-hashes.json)",
+      "performed_at": "2026-09-12T10:30:52Z",
+      "original_reproduction": "Start Survival; send launch; pause before the next physics callback; wait three physics frames; resume; wait five frames. Originally session remains ready/elapsed 0 while truck launch_ready is false.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-1.log: ATTACK_LAUNCH_PAUSE; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes.json",
+        "Original attack sequence retained in tests/red_team/test_prototype_boundaries.gd"
+      ],
+      "result": "pass"
+    },
+    {
+      "event_id": "RV-0002",
+      "finding_id": "RT-0002-F2",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F2-FIX",
+      "fix_commit_or_artifact": "sha256:04C57B23948CCEC93F0EC2BE45F0EF1CD752AD5BFAE4B41C2D2E25F93DBAE6B5 (docs/red_team/reviews/RT-0002-fixed-source-hashes.json)",
+      "performed_at": "2026-09-12T10:30:52Z",
+      "original_reproduction": "Launch; pause; call input_adapter._connection_changed(0, false). Originally paused becomes false, screen gameplay, session running.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-1.log: ATTACK_DISCONNECT_PAUSED; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes.json",
+        "Original attack sequence retained in tests/red_team/test_prototype_boundaries.gd"
+      ],
+      "result": "pass"
+    },
+    {
+      "event_id": "RV-0003",
+      "finding_id": "RT-0002-F3",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F3-FIX",
+      "fix_commit_or_artifact": "sha256:04C57B23948CCEC93F0EC2BE45F0EF1CD752AD5BFAE4B41C2D2E25F93DBAE6B5 (docs/red_team/reviews/RT-0002-fixed-source-hashes.json)",
+      "performed_at": "2026-09-12T10:30:52Z",
+      "original_reproduction": "Create a valid building event for yard_run_4; restart and launch yard_run_5; deliver the old event to bootstrap._event. Originally it grants 100 points and one destroyed building.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-1.log: ATTACK_STALE_EVENT; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes.json",
+        "Original attack sequence retained in tests/red_team/test_prototype_boundaries.gd"
+      ],
+      "result": "pass"
+    },
+    {
+      "event_id": "RV-0004",
+      "finding_id": "RT-0002-F4",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F4-FIX",
+      "fix_commit_or_artifact": "sha256:04C57B23948CCEC93F0EC2BE45F0EF1CD752AD5BFAE4B41C2D2E25F93DBAE6B5 (docs/red_team/reviews/RT-0002-fixed-source-hashes.json)",
+      "performed_at": "2026-09-12T10:30:52Z",
+      "original_reproduction": "Start/restart before the next frame frees a removed overlay. Original attack log shows two p_child->data.parent != this errors from show_gameplay/remove_child.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-1.log: ATTACK_RAPID_RESTART; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes.json",
+        "Original attack sequence retained in tests/red_team/test_prototype_boundaries.gd"
+      ],
+      "result": "pass"
+    },
+    {
+      "event_id": "RV-0005",
+      "finding_id": "RT-0002-F1",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F1-FIX",
+      "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+      "performed_at": "2026-09-12T10:34:31Z",
+      "original_reproduction": "Start Survival; send launch; pause before the next physics callback; wait three physics frames; resume; wait five frames. Originally session remains ready/elapsed 0 while truck launch_ready is false.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-2.log: ATTACK_LAUNCH_PAUSE; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json",
+        "Same original attack sequence rerun after further physics/build changes; no runtime implementation edited by Red Team."
+      ],
+      "result": "pass"
+    },
+    {
+      "event_id": "RV-0006",
+      "finding_id": "RT-0002-F2",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F2-FIX",
+      "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+      "performed_at": "2026-09-12T10:34:31Z",
+      "original_reproduction": "Launch; pause; call input_adapter._connection_changed(0, false). Originally paused becomes false, screen gameplay, session running.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-2.log: ATTACK_DISCONNECT_PAUSED; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json",
+        "Same original attack sequence rerun after further physics/build changes; no runtime implementation edited by Red Team."
+      ],
+      "result": "pass"
+    },
+    {
+      "event_id": "RV-0007",
+      "finding_id": "RT-0002-F3",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F3-FIX",
+      "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+      "performed_at": "2026-09-12T10:34:31Z",
+      "original_reproduction": "Create a valid building event for yard_run_4; restart and launch yard_run_5; deliver the old event to bootstrap._event. Originally it grants 100 points and one destroyed building.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-2.log: ATTACK_STALE_EVENT; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json",
+        "Same original attack sequence rerun after further physics/build changes; no runtime implementation edited by Red Team."
+      ],
+      "result": "pass"
+    },
+    {
+      "event_id": "RV-0008",
+      "finding_id": "RT-0002-F4",
+      "reviewer_identity": "Codex / Agent 8 Red Team (/root/red_team)",
+      "fix_reference": "RT-0002-F4-FIX",
+      "fix_commit_or_artifact": "sha256:4524BC21120EE71C84EB3F353CE28216DD1D0174719693446E62FBA98D8C9F1E (docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json)",
+      "performed_at": "2026-09-12T10:34:31Z",
+      "original_reproduction": "Start/restart before the next frame frees a removed overlay. Original attack log shows two p_child->data.parent != this errors from show_gameplay/remove_child.",
+      "evidence": [
+        "docs/red_team/reviews/RT-0002-reverification-2.log: ATTACK_RAPID_RESTART; RED_TEAM_PROTOTYPE failures=0; exit 0; no engine error lines",
+        "docs/red_team/reviews/RT-0002-fixed-source-hashes-2.json",
+        "Same original attack sequence rerun after further physics/build changes; no runtime implementation edited by Red Team."
+      ],
+      "result": "pass"
+    }
+  ],
   "required_review_fields": [
     "review_id",
     "reviewed_task_pr_or_commit",
@@ -16,13 +384,17 @@
     "severity_summary",
     "critical_findings",
     "follow_up_task_references",
-    "reverification_status"
+    "reverification_status",
+    "review_kind",
+    "report_path",
+    "evidence",
+    "findings"
   ],
   "backlog_crawl_policy": {
     "available_after_task_split": true,
-    "selection": "Completed, eligible, unreviewed tasks; prioritize high-risk and highly depended-on work.",
-    "ordering": "Topological, then chronological.",
-    "skip": "Trivial tasks unless explicitly requested.",
-    "resolution_rule": "Never mark a finding resolved without re-verifying the fixing change."
+    "selection": "Completed, eligible, unreviewed tasks with explicit acceptance proof; prioritize high-risk and highly depended-on work.",
+    "ordering": "Topological, then acceptance time, then numerical task ID for ties.",
+    "skip": "Trivial tasks unless explicitly requested; record the reason. Missing completion evidence does not imply acceptance.",
+    "resolution_rule": "Never mark a finding resolved without a separate passing re-verification event testing the original reproduction against the fixing revision."
   }
 }

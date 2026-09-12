@@ -1,0 +1,35 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ATTACK_LAUNCH_PAUSE {"elapsed_s":0.0,"events":{},"launch_ready":false,"state":"ready"}
+ATTACK_DISCONNECT_PAUSED {"paused":false,"screen":"gameplay","state":"running"}
+Godot_v4.7.2-stable_win64_console.exe : ERROR: Condition 
+"p_child->data.parent != this" is true.
+At line:2 char:1
++ & '.\.tools\godot\Godot_v4.7.2-stable_win64_console.exe' 
+--headless - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo          : NotSpecified: (ERROR: Conditio... thi 
+   s" is true.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   at: remove_child (scene/main/node.cpp:1751)
+   GDScript backtrace (most recent call first):
+       [0] show_gameplay (res://src/ui/presentation.gd:134)
+       [1] start_run (res://src/bootstrap/game.gd:88)
+       [2] _run 
+(res://tests/red_team/test_prototype_boundaries.gd:38)
+ERROR: Condition "p_child->data.parent != this" is true.
+   at: remove_child (scene/main/node.cpp:1751)
+   GDScript backtrace (most recent call first):
+       [0] show_gameplay (res://src/ui/presentation.gd:134)
+       [1] start_run (res://src/bootstrap/game.gd:88)
+       [2] _run 
+(res://tests/red_team/test_prototype_boundaries.gd:46)
+ATTACK_STALE_EVENT {"after_score":100,"before_score":0,"current_run_id":"yard_run_5","destroyed_count":1,"source_run_id":"yard_run_4"}
+RED_TEAM_FAIL: Launch followed by immediate pause loses its queued 
+authoritative event.
+RED_TEAM_FAIL: Disconnect while paused resumes the game.
+RED_TEAM_FAIL: Bootstrap rewrites a previous run event into the 
+current run and awards it.
+RED_TEAM_PROTOTYPE failures=3

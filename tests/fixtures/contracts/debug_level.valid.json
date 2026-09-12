@@ -1,0 +1,57 @@
+{
+  "schema_id": "level.v1",
+  "level_id": "debug_yard",
+  "level_version": "debug_yard_v1",
+  "layout_kind": "fixed",
+  "length_px": 6000,
+  "ground_y": 600,
+  "spawn_position": [140, 555],
+  "definitions": [
+    {
+      "schema_id": "world_object.v1",
+      "definition_id": "shed",
+      "object_type": "building",
+      "size": [100, 90],
+      "exchange": {"speed_cost": 70, "impulse": [0, 0], "nudge_refill": 0, "equipment_refill": 2, "destruction_value": 100, "money_value": 10, "combo_value": 1},
+      "wreck_polygon": [[-50, 45], [10, 18], [50, 45]],
+      "visual_profile": "debug_shed",
+      "building_type_id": "light"
+    },
+    {
+      "schema_id": "world_object.v1",
+      "definition_id": "warehouse",
+      "object_type": "building",
+      "size": [160, 120],
+      "exchange": {"speed_cost": 120, "impulse": [0, 0], "nudge_refill": 0, "equipment_refill": 4, "destruction_value": 220, "money_value": 22, "combo_value": 1},
+      "wreck_polygon": [[-80, 60], [-30, 25], [40, 30], [80, 60]],
+      "visual_profile": "debug_warehouse",
+      "building_type_id": "heavy"
+    },
+    {
+      "schema_id": "world_object.v1",
+      "definition_id": "propane_shed",
+      "object_type": "building",
+      "size": [100, 90],
+      "exchange": {"speed_cost": 70, "impulse": [180, -300], "nudge_refill": 8, "equipment_refill": 4, "destruction_value": 140, "money_value": 14, "combo_value": 1},
+      "wreck_polygon": [[-50, 45], [10, 18], [50, 45]],
+      "visual_profile": "debug_propane",
+      "building_type_id": "light"
+    },
+    {
+      "schema_id": "world_object.v1",
+      "definition_id": "balloon",
+      "object_type": "balloon",
+      "size": [72, 72],
+      "exchange": {"speed_cost": 0, "impulse": [150, -100], "nudge_refill": 12, "equipment_refill": 3, "destruction_value": 50, "money_value": 0, "combo_value": 1},
+      "wreck_polygon": [],
+      "visual_profile": "debug_balloon",
+      "building_type_id": ""
+    }
+  ],
+  "objects": [
+    {"object_id": "shed_01", "definition_id": "shed", "position": [900, 555], "schedule": {"kind": "static"}},
+    {"object_id": "warehouse_01", "definition_id": "warehouse", "position": [1450, 540], "schedule": {"kind": "static"}},
+    {"object_id": "propane_01", "definition_id": "propane_shed", "position": [1900, 555], "schedule": {"kind": "static"}},
+    {"object_id": "balloon_01", "definition_id": "balloon", "position": [2300, 340], "schedule": {"kind": "sine", "axis": [0, 1], "amplitude_px": 35, "period_s": 4, "phase_rad": 0}}
+  ]
+}
